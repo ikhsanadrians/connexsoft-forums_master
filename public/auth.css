@@ -4,3 +4,8 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
 
 }
+
+
+.ilustration-logo > img {
+    filter: brightness(0) invert(1);
+}

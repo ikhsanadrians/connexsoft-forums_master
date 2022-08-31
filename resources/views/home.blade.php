@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -14,12 +15,9 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Welcome') }}
 
-                    @foreach ($rank as $reng )
-                       {{ $reng->user_id }} 
-                       {{ $reng->rank->name }} 
-                    @endforeach
+                  
                 </div>
             </div>
         </div>

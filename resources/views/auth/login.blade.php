@@ -1,6 +1,25 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Connexsoft Forums') }}</title>
+    <link rel="stylesheet" href="auth.css">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link href="https://fonts.googleapis.com/css?family=PlusJakartaSans" rel="stylesheet">
+
+    <!-- Scripts -->
+    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    @vite('resources/css/app.css')
+</head>
+<body>
     <div class="login-container flex justify-center mt-12">
         <div
             class="login-body w-[400px] max-h-[600px] lg:pb-0  lg:w-[800px] lg:h-[550px] border-[1.2px] border-slate-300 rounded-md overflow-hidden">
@@ -23,7 +42,7 @@
                         <h1 class="justify-center font-bold text-4xl hidden lg:block">Welcome!</h1>
                     </div>
                     <div class="form-group flex justify-center mt-12 w-full">
-                        <form action="{{ route('login') }}">
+                        <form action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="input-email pl-6 pr-6">
                                 <label for="email" class="absolute -mt-[25px]">Email</label>
@@ -52,7 +71,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <div class="form-check">
+                                <div class="form-check mt-4">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                         {{ old('remember') ? 'checked' : '' }}>
 
@@ -91,7 +110,7 @@
                                 <div class="lines-2 h-[1.2px] bg-slate-400 w-16 invisible lg:visible"></div>
                             </div>
                             <div class="register-button flex justify-center mt-6">
-                                <a href="#"
+                                <a href="/register"
                                     class="bg-gradient-to-r from-cyan-400 to-green-600 text-white pt-2 pb-2 pr-8 pl-8 rounded-md">Register</a>
                             </div>
 
@@ -106,4 +125,6 @@
             </div>
         </div>
     </div>
-@endsection
+</body>
+</html>
+   
