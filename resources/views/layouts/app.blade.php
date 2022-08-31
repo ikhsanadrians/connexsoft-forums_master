@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="auth.css">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link href="https://fonts.googleapis.com/css?family=PlusJakartaSans" rel="stylesheet">
@@ -23,8 +24,8 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-lg">
-            <div class="container pb-2 pr-20 pl-20">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-lg" >
+            <div class="container  pr-20 pl-20 -mt-4 pb-[6px]">
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -32,13 +33,30 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class=" flex justify-between" id="navbarSupportedContent">
+                <div class=" flex justify-between items-center" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <a class="navbar-brand" href="{{ url('/') }}" class="user-select-none pointer-events-none">
-                        <img src="connexsoftlogo.png" alt="logo" class="h-[60px] user-select-none pointer-events-none">
-                    </a>
+                    <div class="logodkk flex items-center gap-10">
+                        <a class="navbar-brand" href="{{ url('/') }}" class="user-select-none pointer-events-none">
+                            <img src="connexsoftlogo.png" alt="logo" class="h-[60px] user-select-none pointer-events-none">
+                        </a>
+                        <ul class="flex gap-4 font-bold text-slate-600">
+                            <li class="duration-300 hover:bg-slate-200 p-2 rounded-lg"><a href="#">Question</a></li>
+                            <li class="duration-300 hover:bg-slate-200 p-2 rounded-lg"><a href="#">Answers</a></li>
+                            <div class="search  flex items-center font-semibold">
+                                <span class="material-symbols-rounded absolute text-3xl ml-2">
+                                    search
+                                    </span>
+                                <input type="text" name="search" placeholder="Cari Jawaban Atau Pertanyaan"
+                                class="border-slate-300 border-[1.4px] w-[400px] pt-2 pb-2 pl-10 rounded-lg focus:outline-none focus:outline-sky-500 focus:border-none">
+                            </div>
+                        </ul>
+                        
+                    </div>
+                  
+                   
                     <!-- Right Side Of Navbar -->
                     <div class="right-nav">
+                 
                     <ul class="navbar-nav flex">
                         <!-- Authentication Links -->
                         @guest
@@ -55,25 +73,25 @@
                             @endif
                         @else
                         <div class="nav-item">
-                            <li class="nav-item dropdown flex gap-10">
-                                <div class="userandicon flex items-center">
+                            <li class="nav-item dropdown flex gap-4">
+                                <div class="userandicon flex items-center bg-white pl-[5px] pr-[5px] pt-[0.9px] pb-[0.9px] border-slate-300 border-[1.5px] rounded-lg">
                                     <span class="material-symbols-outlined text-4xl inline-block text-slate-600">
                                     person_pin_circle
                                     </span>
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-slate-500" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-slate-500 font-semibold" href="#" role="button"
                                     data-bs-toggle="``dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->username }}
                                 </a></div>
                                 
 
-                                <div class="dropdown-menu dropdown-menu-end flex items-center bg-red-500 pl-2 pr-2 rounded-xl" aria-labelledby="navbarDropdown">
-                                    <span class="material-symbols-outlined text-white">
+                                <div class="dropdown-menu items-center dropdown-menu-end flex rounded-full hover:bg hover:text-slate-300 duration-200" aria-labelledby="navbarDropdown">
+                                   
+                                    <a class="dropdown-item text-slate-300 font-bold" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                     document.getElementById('logout-form') .submit();">
+                                       <span class="material-symbols-outlined text-slate-500">
                                         logout
                                         </span>
-                                    <a class="dropdown-item text-white" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
                                     </a>
 
                         @endguest

@@ -32,24 +32,28 @@ class FirstSeeder extends Seeder
     {
         User::create([
           "Name" => "Muhammad Ramdani",
+          "Username" => "RamdaniXX1",
           "Email" => "ramdani234@gmail.com",
           "Password" => Hash::make("Ramdani234"),
         ]);
 
         User::create([
           "Name" => "Raya Ar-Rizky",
+          "Username" => "RayaSquirel",
           "Email" => "rayaarizky238@gmail.com",
           "Password" => Hash::make("rayadudung234"),
         ]);
 
         User::create([
           "Name" => "Feris Al-Dolphine",
+          "Username" => "dolpineris",
           "Email" => "dolphineferis@gmail.com",
           "Password" => Hash::make("ferisaldolpin"),
         ]);
 
         User::create([
           "Name" => "Ferdi Suspectius Tanto",
+          "Username" => "Amogusferdi",
           "Email" => "ferdisus@gmail.com",
           "Password" => Hash::make("ferdisusamogus"),
         ]);

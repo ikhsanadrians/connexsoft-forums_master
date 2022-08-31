@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header"></div>
 
-                <div class="card-body ml-20 text-2xl">
+                <div class="card-body ml-20 text-2xl font-bold text-slate-700 tracking-wide">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
