@@ -11,9 +11,9 @@ class Question extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',	
-        'user_id',	
-        'point',	
+        'title',
+        'user_id',
+        'point',
         'status'
 
     ];
@@ -21,7 +21,8 @@ class Question extends Model
    public function user(){
     return $this->belongsTo(User::class);
    }
- 
+
+
 
    public function answers(){
     return $this->hasMany(Answer::class);
@@ -31,9 +32,5 @@ class Question extends Model
    public function reports(){
     return $this->hasMany(Report::class);
    }
-   
+
 }
-
-
-
-

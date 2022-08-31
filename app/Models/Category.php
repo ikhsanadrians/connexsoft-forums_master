@@ -10,11 +10,12 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        
+
         'user_id',
-        'moderator_id',	
-        'start_date',	
+        'moderator_id',
+        'start_date',
         'end_date'
 
     ];
+
 }

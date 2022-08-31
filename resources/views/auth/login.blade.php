@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,12 +20,14 @@
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
     @vite('resources/css/app.css')
 </head>
+
 <body>
     <div class="login-container flex justify-center mt-12">
         <div
             class="login-body w-[400px] max-h-[600px] lg:pb-0  lg:w-[800px] lg:h-[550px] border-[1.2px] border-slate-300 rounded-md overflow-hidden">
             <div class="login-inner flex w-full h-full">
-                <div class="login-ilustration bg-gradient-to-r from-sky-500 to-blue-500 h-full w-1/2 invisible lg:visible">
+                <div
+                    class="login-ilustration bg-gradient-to-r from-sky-500 to-blue-500 h-full w-1/2 invisible lg:visible">
                     <div class="ilustration-logo flex justify-center mt-6 pointer-events-none select-none">
                         <img src="connexsoftlogo.png" alt="connexsoftlogo" class="h-16 pointer-events-none select-none">
                     </div>
@@ -81,7 +84,8 @@
                                 </div>
                             </div>
 
-                            <div class="button-forgot flex-col justify-center lg:flex-row lg:justify-between lg:-mt-[10px]">
+                            <div
+                                class="button-forgot flex-col justify-center lg:flex-row lg:justify-between lg:-mt-[10px]">
                                 <div class="button pl-6 pr-6 mt-8">
                                     <button type="submit" name="submit"
                                         class="bg-gradient-to-r from-sky-500 to-blue-500 pt-2 pb-2 w-full mr-6 lg:w-1/2 lg:pr-8 lg:pl-8 text-white rounded-lg ">{{ __('Login') }}</button>
@@ -126,5 +130,5 @@
         </div>
     </div>
 </body>
+
 </html>
-   

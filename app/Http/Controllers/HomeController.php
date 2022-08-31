@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Rank;
 use App\Models\User;
 use App\Models\UserRank;
+use App\Models\Question;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,7 +28,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $rank = UserRank::with('rank')->get();
-        return view('home',compact('rank'));
+        $category = Category::all();
+        $question = Question::with('user')->get();
+        return view('home',compact('category','question'));
     }
 }

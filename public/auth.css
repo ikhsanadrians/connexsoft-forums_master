@@ -9,3 +9,43 @@
 .ilustration-logo > img {
     filter: brightness(0) invert(1);
 }
+
+
+.hamburger > div {
+    background-color: black;
+    height: 2px;
+    width: 25px;
+    margin-bottom: 8px;
+    transition: all 2s;
+}
+
+.hamburger input:checked ~div:nth-child(4) {
+    transform : rotate(-55deg);
+}
+
+
+.hamburger input:checked ~div:nth-child(3) {
+    transform : scale(0);
+}
+
+.hamburger div:nth-child(2){
+    transform-origin: 0 0;
+}
+
+.hamburger div:nth-child(4){
+    transform-origin : 0 100%;
+}
+
+.hamburger input:checked ~div:nth-child(2) {
+    transform : rotate(55deg) translate(-1px,0px);
+}
+
+.categories-card > ul > li {
+ margin-bottom: 2px;
+ cursor: pointer;
+
+}
+
+
+
+

@@ -68,13 +68,13 @@ class FirstSeeder extends Seeder
         Rank::create(["name" => "Pakar"]);
         Rank::create(["name" => "Si Hebat"]);
         Rank::create(["name" => "Jenius"]);
-        
+
         RoleUser::create(["user_id" => 1, "role_id" => 2 , "role_id" => 1]);
         RoleUser::create(["user_id" => 2, "role_id" => 1]);
         UserRank::create(["user_id" => 1, "rank_id" => 6]);
         UserRank::create(["user_id" => 2, "rank_id" => 4]);
         UserRank::create(["user_id" => 4, "rank_id" => 6]);
-        
+
         Category::create(["name" => "Object Oriented Programming" ]);
         Category::create(["name" => "Cloud Computing" ]);
         Category::create(["name" => "Operating System" ]);
@@ -85,12 +85,15 @@ class FirstSeeder extends Seeder
 
 
         Question::create(["title" => "Cara Ngoding Cepat", "user_id" => 1 , "point" => 69 , "status" => "active"]);
-        
+        Question::create(["title" => "Saya Memiliki Error Nih Ada Yang Bisa Bantu Ga?", "user_id" => 2 , "point" => 29 , "status" => "active"]);
+        Question::create(["title" => "Ada Yang Tau Cara buat pasport laravel", "user_id" => 3 , "point" => 69 , "status" => "active"]);
+        Question::create(["title" => "ingfokan framework mantap pengganti php", "user_id" => 4 , "point" => 69 , "status" => "active"]);
+
         Answer::create(["user_id" => 2 , "content" => "ya ndak tau kok tanya saya" , "question_id" => 1 , "is_thebest" => 1]);
-        
+
         Comment::create(["content" => "jawab yang bener dek" , "question_id" => NULL , "answer_id" => 1 , "comment_id" => NULL , "user_id" => 1]);
-      
-        
+
+
         Thank::create(["answer_id"=> 1 , "user_id" => 2]);
 
         Rate::create(["name" => "Sangat Tidak Membantu"]);
@@ -109,12 +112,12 @@ class FirstSeeder extends Seeder
         ReportCategory::create(['name' => "Menggokil"]);
         ReportCategory::create(['name' => "Aneh"]);
         ReportCategory::create(['name' => "Agak Cringe"]);
-        
-        
+
+
         Report::create(["user_id"=>2 , "answer_id" => 1  , "status" => "correction"]);
 
         Respond::create(["moderator_id"=> 1, "report_id"=> 1, "message" => NULL , "action" => "Rejected"]);
-    
+
 
         Banned::create([
             "user_id" => 2,
