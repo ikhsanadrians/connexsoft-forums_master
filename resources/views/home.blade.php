@@ -41,11 +41,24 @@
             </div>
             <div class="questions">
                 @foreach ($question as $itemquestion)
-                    <div class="question-card w-[680px] h-[300px] border-[1.2px] rounded-lg border-slate-300 p-4">
+                    <div class="question-card w-[680px] mb-2 h-[300px] border-[1.2px] rounded-lg border-slate-300 p-4">
                         <div class="question-card-inner">
-                            <h1 class="profile">{{ $itemquestion->user->name }}</h1>
-                            <h1 class="font-bold text-xl">{{ $itemquestion->title }}</h1>
-                            <p>{{ $itemquestion->category_id }}</p>
+                            <div class="flex justify-between">
+                                <div class="userandtitle">
+                                    <h1 class="profile">{{ $itemquestion->user->name }}</h1>
+                                    <h1 class="font-bold text-xl">{{ $itemquestion->title }}</h1>
+                                </div>
+                                <div class="point flex items-center">
+
+                                    <h1 class="point bg-slate-200 p-2 rounded-lg font-bold flex items-center gap-[1.2px]">
+                                        <img src="./images/connexsoftlogomobile.png" alt="tes" class="h-4">+
+                                        {{ $itemquestion->point }} Pts
+                                    </h1>
+                                </div>
+
+
+                            </div>
+
                         </div>
 
 
@@ -55,19 +68,19 @@
             </div>
             <div class="faq w-full h-[200px] border-[1.2px] rounded-lg border-slate-300">
                 <div class="faq-profile p-4">
-                    <div class="profileandimages flex items-center gap-2">
+                    <div class="profileandimages flex justify-center items-center gap-2">
                         <div class="faq-images">
                             <img src="./images/dani.png" alt="dany" class="h-24">
                         </div>
-                        <div class="faq-description">
-                            <h1 class="font-bold">
-                                {{ Auth::user()->username }}
-                            </h1>
-
-                            <p class="font-bold">
-
-
-                            </p>
+                        <div class="faq-description flex-col">
+                            <ul>
+                                <li>
+                                    <h1 class="text-xl font-semibold">{{ Auth::user()->username }}</h1>
+                                </li>
+                                <li>
+                                    <p class="font-semibold bg-amber-200 pl-[12px] rounded-lg">Beginner</p>
+                                </li>
+                            </ul>
                         </div>
 
                     </div>
