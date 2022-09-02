@@ -33,7 +33,8 @@
                         </li>
                         <li class="hover:bg-slate-300 p-2 rounded-md">All Category</li>
                         @foreach ($category as $itemcategory)
-                            <li class="hover:bg-slate-300 p-2 rounded-md">{{ $itemcategory->name }}</li>
+                            <li class="hover:bg-slate-300 hover:translate-x-3 duration-700 p-2 rounded-md">
+                                {{ $itemcategory->name }}</li>
                         @endforeach
 
                     </ul>
