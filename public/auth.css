@@ -47,5 +47,14 @@
 }
 
 
+.ranklist > ul > li {
+    display : flex;
+    align-items: center;
+    gap:4px;
+    margin-bottom: 5px;
+}
+
+
+
 
 

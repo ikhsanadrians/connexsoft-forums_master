@@ -8,8 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Connexsoft Forums') }}</title>
+    <title>Connexsoft Forums | Forum For Developers!</title>
     <link rel="stylesheet" href="auth.css">
+    <link rel="icon" href="./images/connexsoftlogomobile.png">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="stylesheet"
@@ -27,7 +28,7 @@
 
 <body>
     <div id="app">
-        <header class="desktop-header hidden lg:block sm:block md:block sticky bg-white top-0">
+        <header class="desktop-header hidden lg:block sm:block md:block sticky bg-white top-0" style="z-index:99">
             <nav class="shadow-lg">
                 <div class="container pl-20 pt-2 pb-2 flex gap-6 justify-evenly">
                     <div class="navbar-icon">
@@ -197,7 +198,7 @@
 
         </header>
 
-        <main class="py-4">
+        <main class="py-4 bg-[#f1f3f2]">
             @yield('content')
         </main>
     </div>
