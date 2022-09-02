@@ -64,7 +64,7 @@
                                 <div class="point flex">
 
                                     <h1
-                                        class="point bg-slate-200 pt-[0.8px] pb-[0.8px] pr-[5px] pl-[5px] rounded-2xl font-bold flex items-center gap-[1.2px]">
+                                        class="point pt-[0.8px] pb-[0.8px] pr-[5px] pl-[5px] rounded-2xl font-bold flex items-center gap-[1.2px]">
                                         <img src="./images/connexsoftlogomobile.png" alt="tes" class="h-4">+
                                         {{ $itemquestion->point }}
                                     </h1>
@@ -206,5 +206,4 @@
 
 
     </div>
-    //comment
 @endsection
