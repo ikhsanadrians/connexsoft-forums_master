@@ -15,5 +15,8 @@
         "sass": "^1.32.11",
         "tailwindcss": "^3.1.8",
         "vite": "^3.0.0"
+    },
+    "dependencies": {
+        "jquery": "^3.6.1"
     }
 }

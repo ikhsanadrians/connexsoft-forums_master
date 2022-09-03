@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="container">
+    <div class="container z-10">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -48,14 +48,16 @@
                             <div class="flex justify-between">
                                 <div class="userandtitle">
                                     <h1 class="profile flex items-center text-l text-zinc-500"><span
-                                            class="material-symbols-outlined text-zinc-500">
+                                            class="material-symbols-outlined text-zinc-500 text-transparent bg-gradient-to-r cursor-pointer from-emerald-600 to-sky-500 bg-clip-text">
                                             person
                                         </span>{{ $itemquestion->user->name }}
-                                        <span class="material-symbols-outlined ml-2 text-zinc-500">
+                                        <span
+                                            class="material-symbols-outlined ml-2 text-zinc-500 text-transparent bg-gradient-to-r cursor-pointer from-emerald-600 to-sky-500 bg-clip-text">
                                             history
                                         </span>
-                                        <p>{{ $itemquestion->created_at->diffForHumans() }}</p>
-                                        <span class="material-symbols-outlined text-zinc-500 ml-2">
+                                        <p class="cursor-pointer">{{ $itemquestion->created_at->diffForHumans() }}</p>
+                                        <span
+                                            class="material-symbols-outlined text-transparent bg-gradient-to-r cursor-pointer from-emerald-600 to-sky-500 bg-clip-text  ml-2">
                                             dataset
                                         </span>
                                         Web Programming
@@ -65,7 +67,7 @@
                                 <div class="point flex">
 
                                     <h1
-                                        class="point pt-[0.8px] pb-[0.8px] pr-[5px] pl-[5px] rounded-2xl font-bold flex items-center gap-[1.2px]">
+                                        class="point pt-[0.8px] pb-[0.8px] pr-[5px] pl-[5px] rounded-2xl font-bold cursor-pointer flex items-center gap-[1.2px]">
                                         <img src="./images/connexsoftlogomobile.png" alt="tes" class="h-4">+
                                         {{ $itemquestion->point }}
                                     </h1>
@@ -125,7 +127,7 @@
                     </div>
 
                 </div>
-                <div
+                <div id="buttonaskbody"
                     class="buttonask flex gap-[1.8px] justify-center mt-4 font-bold text-white bg-gradient-to-r from-red-500 to-red-600 hover:bg-gradient-to-r hover:from-red-600 hover:to-red-500 p-2 rounded-2xl cursor-pointer duration-500">
                     <span class="material-icons text-slate-200">
                         front_hand
@@ -205,6 +207,103 @@
 
         </div>
 
+    </div>
+
+    <div class="question-modals flex justify-center">
+        <div
+            class="question-modals-inner nonactive  z-20 bg-slate-100 p-6 rounded-lg top-1/4 shadow-lg h-[400px] w-1/2 absolute">
+            <div class="question-title flex justify-between mb-2">
+                <h1 class="font-bold">Ask a question about your Problems!</h1>
+                <span class="material-symbols-outlined cursor-pointer" id="buttonclose">
+                    close
+                </span>
+            </div>
+            <div class="question-input mb-2">
+                <textarea placeholder="Type your Question Here" style="resize:none" rows="4" cols="74"
+                    class="placeholder:text-slate-400 h-[200px] p-2 rounded-lg focus:outline-none focus:outline-cyan-400 bg-slate-200 "></textarea>
+            </div>
+            <div class="question-selects flex gap-4 mb-4">
+                <div class="question-category">
+                    <select
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2">
+                        @foreach ($category as $itemcategory)
+                            <option value="{{ $itemcategory->id }}">{{ $itemcategory->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="point-select ">
+                    <select name="" id=""
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2">
+                        <option>10</option>
+                    </select>
+                </div>
+                <div class="point-totals flex items-center">
+                    <span class="material-symbols-outlined">
+                        contact_support
+                    </span>
+                    <p class="text-sm">
+                        You Have 65 Points
+                    </p>
+                </div>
+            </div>
+            <button type="submit"
+                class="flex mt-2 items-center pt-2 pb-2 pr-4 pl-4 rounded-2xl font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:opacity-80">
+                <span class="material-icons text-slate-200">
+                    front_hand
+                </span>
+                Ask Your Question
+            </button>
+        </div>
+    </div>
+    <div class="backdrop nonactive bg-sky-600/50 w-full h-full absolute top-[83px] -mt-2 mb-4" style="z-index: 10">
 
     </div>
+
+    <script>
+        let buttonasknav = document.querySelector('#asknav')
+        let buttonaskbody = document.querySelector('#buttonaskbody')
+        let backdrop = document.querySelector('.backdrop')
+        let modalsquestion = document.querySelector('.question-modals-inner')
+        let closes = document.querySelector('#buttonclose')
+
+
+        function backdropSelect() {
+            if (backdrop.classList.contains('nonactive')) {
+                backdrop.classList.remove('nonactive')
+                backdrop.classList.add('active')
+            } else if (backdrop.classList.contains('active')) {
+                backdrop.classList.remove('active')
+                backdrop.classList.add('nonactive')
+            }
+        }
+
+        function questionModalsSelect() {
+            if (modalsquestion.classList.contains('nonactive')) {
+                modalsquestion.classList.remove('nonactive')
+                modalsquestion.classList.add('active')
+            } else if (modalsquestion.classList.contains('active')) {
+                modalsquestion.classList.remove('active')
+                modalsquestion.classList.add('nonactive')
+            }
+        }
+
+
+
+
+        buttonasknav.addEventListener('click', () => {
+            backdropSelect()
+            questionModalsSelect()
+        })
+
+        buttonaskbody.addEventListener('click', () => {
+            backdropSelect()
+            questionModalsSelect()
+        })
+
+
+        closes.addEventListener('click', () => {
+            backdropSelect()
+            questionModalsSelect()
+        })
+    </script>
 @endsection

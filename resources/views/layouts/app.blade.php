@@ -21,6 +21,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
     @vite('resources/css/app.css')
@@ -74,14 +75,15 @@
                                         v-pre>{{ Auth::user()->username }}</a></p>
                             </div>
                         </div>
-                        <div class="ask bg-cyan-500 pt-[3.9px] pb-[3.9px] pl-2 pr-2 rounded-2xl">
-                            <a href="" class="flex items-center gap-[1.2px]">
+                        <div id="asknav"
+                            class="ask cursor-pointer hover:opacity-80 bg-gradient-to-r from-cyan-500 to-blue-500 pt-[3.9px] pb-[3.9px] pl-2 pr-2 rounded-2xl">
+                            <div class="flex items-center gap-[1.2px]">
                                 <span class="material-icons text-slate-200">
                                     front_hand
                                 </span>
 
                                 <p class="font-bold text-white">Ask</p>
-                            </a>
+                            </div>
                         </div>
                         <div class="logout">
                             <a href="{{ route('logout') }}"

@@ -56,5 +56,13 @@
 
 
 
+.active {
+    display : block;
+}
+
+.nonactive {
+    display: none;
+}
+
 
 
