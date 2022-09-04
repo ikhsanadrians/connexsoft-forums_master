@@ -23,3 +23,4 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/question/{id}',[App\Http\Controllers\QuestionController::class,'showdetailsquestion']);

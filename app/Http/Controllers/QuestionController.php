@@ -44,9 +44,12 @@ class QuestionController extends Controller
      * @param  \App\Models\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function showdetailsquestion($id)
     {
-        //
+
+        $questions = Question::with('answers')->findOrFail($id);
+        return view('questiondetail',compact('questions'));
+
     }
 
     /**
@@ -59,6 +62,9 @@ class QuestionController extends Controller
     {
         //
     }
+
+
+
 
     /**
      * Update the specified resource in storage.

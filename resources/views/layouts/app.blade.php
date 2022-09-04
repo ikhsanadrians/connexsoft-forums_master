@@ -34,7 +34,8 @@
                 <div class="container pl-20 pt-2 pb-2 flex gap-6 justify-evenly">
                     <div class="navbar-icon">
                         <a href="{{ url('/') }}">
-                            <img src="./connexsoftlogo.png" alt="connexsoft logo" class="h-14 w-full">
+                            <img src="{{ asset('images/connexsoftlogo.png') }}" alt="connexsoft logo"
+                                class="h-14 w-full">
                         </a>
                     </div>
 
@@ -71,7 +72,7 @@
 
                         <div class="profile flex gap-2 bg-slate-200 pt-[1.2px] pb-[1.2px] pr-4 rounded-2xl">
                             <div class="profile-image flex items-center">
-                                <img src="./images/dani.png" alt="profile-image" class="h-8">
+                                <img src="{{ asset('images/dani.png') }}" alt="profile-image" class="h-8">
                             </div>
                             <div class="profile-username flex items-center">
                                 <p class="font-bold cursor-pointer text-slate-500"><a
@@ -203,7 +204,7 @@
 
         </header>
 
-        <main class="py-4 bg-[#f1f3f2]">
+        <main class="py-4 bg-[#f1f3f2]" style=" font-family: 'Plus Jakarta Sans', sans-serif;">
             @yield('content')
         </main>
     </div>

@@ -30,6 +30,14 @@ class HomeController extends Controller
     {
         $category = Category::all();
         $question = Question::with('user')->get();
-        return view('home',compact('category','question'));
+        $points = range(10,110);
+        $counts = count($points);
+
+
+
+
+        return view('home',compact('category','question','points','counts'));
     }
+
+
 }

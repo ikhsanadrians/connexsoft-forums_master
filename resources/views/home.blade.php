@@ -62,7 +62,9 @@
                                         </span>
                                         Web Programming
                                     </h1>
-                                    <h1 class="font-bold text-xl text-slate-700">{{ $itemquestion->title }}</h1>
+                                    <h1 class="font-bold text-xl text-slate-700"><a
+                                            href="{{ url('question/' . $itemquestion->id) }}">{{ $itemquestion->title }}</a>
+                                    </h1>
                                 </div>
                                 <div class="point flex">
 
@@ -249,7 +251,11 @@
                 <div class="point-select ">
                     <select name="" id=""
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2">
-                        <option>10</option>
+
+                        @for ($i = 10; $i < $counts; $i++)
+                            <option>{{ $i }}</option>
+                        @endfor
+
                     </select>
                 </div>
                 <div class="upload flex items-center cursor-pointer">
@@ -282,81 +288,5 @@
 
     </div>
 
-    <script>
-        let buttonasknav = document.querySelector('#asknav')
-        let buttonaskbody = document.querySelector('#buttonaskbody')
-        let backdrop = document.querySelector('.backdrop')
-        let modalsquestion = document.querySelector('.question-modals-inner')
-        let closes = document.querySelector('#buttonclose')
-        let preview = document.querySelector('.upload-image-preview')
-        let fileuploaded = document.querySelector('#imageinput')
-        let previewimg = document.querySelector('#imagepreview')
-        let closebtnimgpre = document.querySelector('#buttoncloseimagepreview')
-
-
-        function backdropSelect() {
-            if (backdrop.classList.contains('nonactive')) {
-                backdrop.classList.remove('nonactive')
-                backdrop.classList.add('active')
-            } else if (backdrop.classList.contains('active')) {
-                backdrop.classList.remove('active')
-                backdrop.classList.add('nonactive')
-            }
-        }
-
-        function questionModalsSelect() {
-            if (modalsquestion.classList.contains('nonactive')) {
-                modalsquestion.classList.remove('nonactive')
-                modalsquestion.classList.add('active')
-            } else if (modalsquestion.classList.contains('active')) {
-                modalsquestion.classList.remove('active')
-                modalsquestion.classList.add('nonactive')
-            }
-        }
-
-        function removeUploadFilePreview() {
-            preview.classList.remove('active')
-            preview.classList.add('nonactive')
-
-        }
-
-
-
-
-        buttonasknav.addEventListener('click', () => {
-            backdropSelect()
-            questionModalsSelect()
-        })
-
-        buttonaskbody.addEventListener('click', () => {
-            backdropSelect()
-            questionModalsSelect()
-        })
-
-
-        closes.addEventListener('click', () => {
-            backdropSelect()
-            questionModalsSelect()
-            removeUploadFilePreview()
-        })
-
-        closebtnimgpre.addEventListener('click', () => {
-            removeUploadFilePreview()
-        })
-
-        fileuploaded.addEventListener("change", (event) => {
-
-            if (preview.classList.contains('nonactive')) {
-                preview.classList.remove('nonactive')
-                preview.classList.add('active')
-            }
-            let imagename = event.target.files[0].name
-            $("#imagenames").text(imagename)
-
-            let img = URL.createObjectURL(event.target.files[0])
-            previewimg.src = img
-
-
-        })
-    </script>
+    <script src="./js/home.js"></script>
 @endsection
