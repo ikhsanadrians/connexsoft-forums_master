@@ -211,7 +211,7 @@
 
     <div class="question-modals flex justify-center">
         <div
-            class="question-modals-inner nonactive  z-20 bg-slate-100 p-6 rounded-lg top-1/4 shadow-lg h-[400px] w-1/2 absolute">
+            class="question-modals-inner nonactive  z-20 bg-slate-100 p-6 rounded-lg top-1/4 shadow-lg h-[440px] w-1/2 absolute">
             <div class="question-title flex justify-between mb-2">
                 <h1 class="font-bold">Ask a question about your Problems!</h1>
                 <span class="material-symbols-outlined cursor-pointer" id="buttonclose">
@@ -222,10 +222,25 @@
                 <textarea placeholder="Type your Question Here" style="resize:none" rows="4" cols="74"
                     class="placeholder:text-slate-400 h-[200px] p-2 rounded-lg focus:outline-none focus:outline-cyan-400 bg-slate-200 "></textarea>
             </div>
+            <div class="upload-image-preview nonactive h-6 pt-2 pb-2 pl-4 pr-4 mb-4 bg-gradient-to-r rounded-lg bg-slate-200 items-center"
+                style="max-width:100%">
+                <div class="imgandname flex items-center justify-around h-full gap-4 w-full">
+                    <div class="imgandp flex w-full gap-2">
+                        <img src="" alt="imgpreview" id="imagepreview" class="h-6">
+                        <p id="imagenames"></p>
+                    </div>
+
+                    <span class="material-symbols-outlined cursor-pointer hover:opacity-80" id="buttoncloseimagepreview">
+                        close
+                    </span>
+                </div>
+
+            </div>
             <div class="question-selects flex gap-4 mb-4">
                 <div class="question-category">
                     <select
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2">
+                        <option>Select Category</option>
                         @foreach ($category as $itemcategory)
                             <option value="{{ $itemcategory->id }}">{{ $itemcategory->name }}</option>
                         @endforeach
@@ -237,10 +252,18 @@
                         <option>10</option>
                     </select>
                 </div>
+                <div class="upload flex items-center cursor-pointer">
+                    <input type="file" name="imageinputs" id="imageinput" class="absolute opacity-0 w-6">
+                    <span class="material-symbols-outlined cursor-pointer hover:text-slate-600">
+                        attach_file
+                    </span>
+                </div>
+
                 <div class="point-totals flex items-center">
                     <span class="material-symbols-outlined">
                         contact_support
                     </span>
+
                     <p class="text-sm">
                         You Have 65 Points
                     </p>
@@ -255,7 +278,7 @@
             </button>
         </div>
     </div>
-    <div class="backdrop nonactive bg-sky-600/50 w-full h-full absolute top-[83px] -mt-2 mb-4" style="z-index: 10">
+    <div class="backdrop nonactive bg-sky-600/50 w-full absolute top-[83px] -mt-2 mb-4" style="z-index: 10; height:100%">
 
     </div>
 
@@ -265,6 +288,10 @@
         let backdrop = document.querySelector('.backdrop')
         let modalsquestion = document.querySelector('.question-modals-inner')
         let closes = document.querySelector('#buttonclose')
+        let preview = document.querySelector('.upload-image-preview')
+        let fileuploaded = document.querySelector('#imageinput')
+        let previewimg = document.querySelector('#imagepreview')
+        let closebtnimgpre = document.querySelector('#buttoncloseimagepreview')
 
 
         function backdropSelect() {
@@ -287,6 +314,12 @@
             }
         }
 
+        function removeUploadFilePreview() {
+            preview.classList.remove('active')
+            preview.classList.add('nonactive')
+
+        }
+
 
 
 
@@ -304,6 +337,26 @@
         closes.addEventListener('click', () => {
             backdropSelect()
             questionModalsSelect()
+            removeUploadFilePreview()
+        })
+
+        closebtnimgpre.addEventListener('click', () => {
+            removeUploadFilePreview()
+        })
+
+        fileuploaded.addEventListener("change", (event) => {
+
+            if (preview.classList.contains('nonactive')) {
+                preview.classList.remove('nonactive')
+                preview.classList.add('active')
+            }
+            let imagename = event.target.files[0].name
+            $("#imagenames").text(imagename)
+
+            let img = URL.createObjectURL(event.target.files[0])
+            previewimg.src = img
+
+
         })
     </script>
 @endsection

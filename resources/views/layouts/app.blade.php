@@ -59,7 +59,10 @@
                     <div class="notifprofileandlogout flex items-center gap-2">
                         <div class="notif flex items-center">
                             <a href="" class="flex items-center">
-                                <span class="material-symbols-outlined text-yellow-500">
+                                <span class="material-symbols-outlined relative text-yellow-500">
+                                    <div
+                                        class="ping h-2 w-2 absolute rounded-full ml-[1.3px] mt-[1px] animate-ping duration-600 bg-yellow-500">
+                                    </div>
                                     notifications
                                 </span>
                             </a>
@@ -204,6 +207,7 @@
             @yield('content')
         </main>
     </div>
+
 </body>
 
 </html>
