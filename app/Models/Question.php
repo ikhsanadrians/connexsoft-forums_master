@@ -13,6 +13,7 @@ class Question extends Model
     protected $fillable = [
         'title',
         'user_id',
+        'category_id',
         'point',
         'status'
 
@@ -36,5 +37,9 @@ class Question extends Model
    public function userRank(){
      return $this->hasOneThrough(UserRank::class,User::class);
    }
+
+   public function category(){
+    return $this->belongsTo(Category::class);
+}
 
 }

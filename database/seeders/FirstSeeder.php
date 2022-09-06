@@ -90,17 +90,17 @@ class FirstSeeder extends Seeder
         Category::create(["name" => "Laravel" ]);
 
 
-        Question::create(["title" => "Cara Ngoding Cepat", "user_id" => 1 , "point" => 69 , "status" => "active"]);
-        Question::create(["title" => "Saya Memiliki Error Nih Ada Yang Bisa Bantu Ga?", "user_id" => 2 , "point" => 29 , "status" => "active"]);
-        Question::create(["title" => "Ada Yang Tau Cara buat pasport laravel", "user_id" => 3 , "point" => 69 , "status" => "active"]);
-        Question::create(["title" => "ingfokan framework mantap pengganti php", "user_id" => 4 , "point" => 69 , "status" => "active"]);
+        // Question::create(["title" => "Cara Ngoding Cepat", "user_id" => 1 , "point" => 69 , "status" => "active"]);
+        // Question::create(["title" => "Saya Memiliki Error Nih Ada Yang Bisa Bantu Ga?", "user_id" => 2 , "point" => 29 , "status" => "active"]);
+        // Question::create(["title" => "Ada Yang Tau Cara buat pasport laravel", "user_id" => 3 , "point" => 69 , "status" => "active"]);
+        // Question::create(["title" => "ingfokan framework mantap pengganti php", "user_id" => 4 , "point" => 69 , "status" => "active"]);
 
-        Answer::create(["user_id" => 2 , "content" => "ya ndak tau kok tanya saya" , "question_id" => 1 , "is_thebest" => 1]);
+        // Answer::create(["user_id" => 2 , "content" => "ya ndak tau kok tanya saya" , "question_id" => 1 , "is_thebest" => 1]);
 
-        Comment::create(["content" => "jawab yang bener dek" , "question_id" => NULL , "answer_id" => 1 , "comment_id" => NULL , "user_id" => 1]);
+        // Comment::create(["content" => "jawab yang bener dek" , "question_id" => NULL , "answer_id" => 1 , "comment_id" => NULL , "user_id" => 1]);
 
 
-        Thank::create(["answer_id"=> 1 , "user_id" => 2]);
+        // Thank::create(["answer_id"=> 1 , "user_id" => 2]);
 
         Rate::create(["name" => "Sangat Tidak Membantu"]);
         Rate::create(["name" => "Tidak Membantu"]);
@@ -108,7 +108,7 @@ class FirstSeeder extends Seeder
         Rate::create(["name" => "Membantu"]);
         Rate::create(["name" => "Sangat Membantu"]);
 
-        Rating::create(["answer_id"=> 1, "user_id"=>1,"rate_id"=>1]);
+        // Rating::create(["answer_id"=> 1, "user_id"=>1,"rate_id"=>1]);
 
 
 
@@ -120,16 +120,16 @@ class FirstSeeder extends Seeder
         ReportCategory::create(['name' => "Agak Cringe"]);
 
 
-        Report::create(["user_id"=>2 , "answer_id" => 1  , "status" => "correction"]);
+        // Report::create(["user_id"=>2 , "answer_id" => 1  , "status" => "correction"]);
 
-        Respond::create(["moderator_id"=> 1, "report_id"=> 1, "message" => NULL , "action" => "Rejected"]);
+        // Respond::create(["moderator_id"=> 1, "report_id"=> 1, "message" => NULL , "action" => "Rejected"]);
 
 
-        Banned::create([
-            "user_id" => 2,
-            "moderator_id" => 1,
-            "start_date" => "2022-08-04",
-            "end_date" => "2022-09-04",
-        ]);
+        // Banned::create([
+        //     "user_id" => 2,
+        //     "moderator_id" => 1,
+        //     "start_date" => "2022-08-04",
+        //     "end_date" => "2022-09-04",
+        // ]);
     }
 }

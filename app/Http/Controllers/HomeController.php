@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         $category = Category::all();
-        $question = Question::with('user')->get();
+        $question = Question::with('user','category')->get();
         $points = range(10,110);
         $counts = count($points);
 
@@ -45,14 +45,16 @@ class HomeController extends Controller
          $user = Auth::user()->id;
          $question = $request->question;
          $points = $request->point;
+         $category = $request->category;
          Question::create([
             'user_id' => $user,
             'title' => $question,
+            'category_id'=>$category,
             'point' => $points,
          ]);
 
          return redirect('/');
-      
+
     }
 
 

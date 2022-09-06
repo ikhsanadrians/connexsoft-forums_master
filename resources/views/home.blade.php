@@ -41,14 +41,15 @@
                 </div>
             </div>
             <div class="questions">
-                <div class="welcoming-users pt-4 pl-6 rounded-lg text-white text-4xl font-bold h-[220px] w-[680px] flex bg-gradient-to-r from-sky-400 to-blue-500 mb-4 overflow-hidden">
-                       <h1 class="flex">Welcome Back {{Auth::user()->username}}!</h1>
-                   
-                        <img src="{{ asset('images/coworking.png')}}" alt="ilustration" class="h-72 pointer-events-none -ml-8">
-                        
-                            
-                        
-        
+                <div
+                    class="welcoming-users pt-4 pl-6 rounded-lg text-white text-4xl font-bold h-[220px] w-[680px] flex bg-gradient-to-r from-sky-400 to-blue-500 mb-4 overflow-hidden">
+                    <h1 class="flex">Welcome Back {{ Auth::user()->username }}!</h1>
+
+                    <img src="{{ asset('images/coworking.png') }}" alt="ilustration" class="h-72 pointer-events-none -ml-8">
+
+
+
+
                 </div>
 
                 @foreach ($question as $itemquestion)
@@ -60,7 +61,7 @@
                                     <h1 class="profile flex items-center text-l text-zinc-500"><span
                                             class="material-symbols-outlined text-zinc-500 text-transparent bg-gradient-to-r cursor-pointer from-emerald-600 to-sky-500 bg-clip-text">
                                             person
-                                        </span>{{ $itemquestion->user->name }}
+                                        </span>{{ $itemquestion->user->username }}
                                         <span
                                             class="material-symbols-outlined ml-2 text-zinc-500 text-transparent bg-gradient-to-r cursor-pointer from-emerald-600 to-sky-500 bg-clip-text">
                                             history
@@ -70,10 +71,10 @@
                                             class="material-symbols-outlined text-transparent bg-gradient-to-r cursor-pointer from-emerald-600 to-sky-500 bg-clip-text  ml-2">
                                             dataset
                                         </span>
-                                        Web Programming
+                                        <p>{{ Str::limit($itemquestion->category->name, 15) }}</p>
                                     </h1>
                                     <h1 class="font-bold text-xl text-slate-700"><a
-                                            href="{{ url('question/' . $itemquestion->id) }}">{{ $itemquestion->title }}</a>
+                                            href="{{ url('/question/' . $itemquestion->id . '' . '/details') }}">{{ $itemquestion->title }}</a>
                                     </h1>
                                 </div>
                                 <div class="point flex">
@@ -84,7 +85,7 @@
                                         {{ $itemquestion->point }}
                                     </h1>
                                 </div>
-                            </div> 
+                            </div>
 
                             <div class="answerandblank flex justify-end items-end cursor-pointer">
 
@@ -122,17 +123,19 @@
                                         </h1>
                                     </li>
                                     <li class="mb-2">
-                                        <div class="pangkats flex items-center bg-gradient-to-r p-2 rounded-xl from-amber-300 to-yellow-500">
-                                            <i class="fa-sharp fa-solid fa-crown pointer-events-none items-center bg-gradient-to-r from-slate-300 to-slate-600 text-transparent bg-clip-text"></i>
-                                            <p
-                                                class="font-semibold pl-2 rounded-lg flex justify-center">
+                                        <div
+                                            class="pangkats flex items-center bg-gradient-to-r p-2 rounded-xl from-amber-300 to-yellow-500">
+                                            <i
+                                                class="fa-sharp fa-solid fa-crown pointer-events-none items-center bg-gradient-to-r from-slate-300 to-slate-600 text-transparent bg-clip-text"></i>
+                                            <p class="font-semibold pl-2 rounded-lg flex justify-center">
                                                 Beginner</p>
 
                                         </div>
                                     </li>
                                     <h1
                                         class="point mb-2 bg-slate-200 p-2 rounded-lg font-bold flex items-center gap-[1.6px] justify-center">
-                                        <img src="./images/connexsoftlogomobile.png" alt="tes" class="h-4 pointer-events-none">
+                                        <img src="./images/connexsoftlogomobile.png" alt="tes"
+                                            class="h-4 pointer-events-none">
                                         3450
                                     </h1>
                                 </ul>
@@ -226,84 +229,86 @@
     </div>
     <form action="{{ route('homepost') }}" method="POST">
         @csrf
-    <div class="question-modals flex justify-center">
-        <div
-            class="question-modals-inner nonactive  z-20 bg-slate-100 p-6 rounded-lg top-1/4 shadow-lg h-[440px] w-1/2 absolute">
-            <div class="question-title flex justify-between mb-2">
-                <h1 class="font-bold">Ask a question about your Problems!</h1>
-                <span class="material-symbols-outlined cursor-pointer" id="buttonclose">
-                    close
-                </span>
-            </div>
-            <div class="question-input mb-2">
-                <textarea name="question" placeholder="Type your Question Here" style="resize:none" rows="4" cols="74"
-                    class="placeholder:text-slate-400 h-[200px] p-2 rounded-lg focus:outline-none focus:outline-cyan-400 bg-slate-200 "></textarea>
-            </div>
-            <div class="upload-image-preview nonactive h-6 pt-2 pb-2 pl-4 pr-4 mb-4 bg-gradient-to-r rounded-lg bg-slate-200 items-center"
-                style="max-width:100%">
-                <div class="imgandname flex items-center justify-around h-full gap-4 w-full">
-                    <div class="imgandp flex w-full gap-2">
-                        <img src="" alt="imgpreview" id="imagepreview" class="h-6">
-                        <p id="imagenames"></p>
-                    </div>
-
-                    <span class="material-symbols-outlined cursor-pointer hover:opacity-80" id="buttoncloseimagepreview">
+        <div class="question-modals flex justify-center">
+            <div
+                class="question-modals-inner nonactive  z-20 bg-slate-100 p-6 rounded-lg top-1/4 shadow-lg h-[440px] w-1/2 absolute">
+                <div class="question-title flex justify-between mb-2">
+                    <h1 class="font-bold">Ask a question about your Problems!</h1>
+                    <span class="material-symbols-outlined cursor-pointer" id="buttonclose">
                         close
                     </span>
                 </div>
+                <div class="question-input mb-2">
+                    <textarea name="question" placeholder="Type your Question Here" style="resize:none" rows="4" cols="74"
+                        class="placeholder:text-slate-400 h-[200px] p-2 rounded-lg focus:outline-none focus:outline-cyan-400 bg-slate-200 "></textarea>
+                </div>
+                <div class="upload-image-preview nonactive h-6 pt-2 pb-2 pl-4 pr-4 mb-4 bg-gradient-to-r rounded-lg bg-slate-200 items-center"
+                    style="max-width:100%">
+                    <div class="imgandname flex items-center justify-around h-full gap-4 w-full">
+                        <div class="imgandp flex w-full gap-2">
+                            <img src="" alt="imgpreview" id="imagepreview" class="h-6">
+                            <p id="imagenames"></p>
+                        </div>
+
+                        <span class="material-symbols-outlined cursor-pointer hover:opacity-80"
+                            id="buttoncloseimagepreview">
+                            close
+                        </span>
+                    </div>
+
+                </div>
+                <div class="question-selects flex gap-4 mb-4">
+
+                    <div class="question-category">
+
+                        <select
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2"
+                            name="category">
+                            <option>Select Category</option>
+                            @foreach ($category as $itemcategory)
+                                <option value="{{ $itemcategory->id }}">{{ $itemcategory->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="point-select ">
+                        <select name="point" id=""
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2">
+
+                            @for ($i = 10; $i < $counts; $i++)
+                                <option>{{ $i }}</option>
+                            @endfor
+
+                        </select>
+                    </div>
+                    <div class="upload flex items-center cursor-pointer">
+                        <input type="file" name="imageinputs" id="imageinput" class="absolute opacity-0 w-6">
+                        <span class="material-symbols-outlined cursor-pointer hover:text-slate-600">
+                            attach_file
+                        </span>
+                    </div>
+
+                    <div class="point-totals flex items-center">
+                        <span class="material-symbols-outlined">
+                            contact_support
+                        </span>
+
+                        <p class="text-sm">
+                            You Have 65 Points
+                        </p>
+                    </div>
+
+                </div>
+                <button type="submit"
+                    class="flex mt-2 items-center pt-2 pb-2 pr-4 pl-4 rounded-2xl font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:opacity-80">
+                    <span class="material-icons text-slate-200">
+                        front_hand
+                    </span>
+                    Ask Your Question
+                </button>
 
             </div>
-            <div class="question-selects flex gap-4 mb-4">
-             
-                <div class="question-category">
-                    
-                    <select
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2" name="category">
-                        <option>Select Category</option>
-                        @foreach ($category as $itemcategory)
-                            <option value="{{ $itemcategory->id }}">{{ $itemcategory->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="point-select ">
-                    <select name="point" id=""
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2">
-
-                        @for ($i = 10; $i < $counts; $i++)
-                            <option>{{ $i }}</option>
-                        @endfor
-
-                    </select>
-                </div>
-                <div class="upload flex items-center cursor-pointer">
-                    <input type="file" name="imageinputs" id="imageinput" class="absolute opacity-0 w-6">
-                    <span class="material-symbols-outlined cursor-pointer hover:text-slate-600">
-                        attach_file
-                    </span>
-                </div>
-
-                <div class="point-totals flex items-center">
-                    <span class="material-symbols-outlined">
-                        contact_support
-                    </span>
-
-                    <p class="text-sm">
-                        You Have 65 Points
-                    </p>
-                </div>
-         
-            </div>
-            <button type="submit"
-                class="flex mt-2 items-center pt-2 pb-2 pr-4 pl-4 rounded-2xl font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:opacity-80">
-                <span class="material-icons text-slate-200">
-                    front_hand
-                </span>
-                Ask Your Question
-            </button>
-        
         </div>
-    </div>
-</form>
+    </form>
     <div class="backdrop nonactive bg-sky-600/50 w-full absolute top-[83px] -mt-2 mb-4" style="z-index: 10; height:100%">
 
     </div>

@@ -17,6 +17,7 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
+        "daisyui": "^2.25.0",
         "jquery": "^3.6.1"
     }
 }
