@@ -41,6 +41,16 @@
                 </div>
             </div>
             <div class="questions">
+                <div class="welcoming-users pt-4 pl-6 rounded-lg text-white text-4xl font-bold h-[220px] w-[680px] flex bg-gradient-to-r from-sky-400 to-blue-500 mb-4 overflow-hidden">
+                       <h1 class="flex">Welcome Back {{Auth::user()->username}}!</h1>
+                   
+                        <img src="{{ asset('images/coworking.png')}}" alt="ilustration" class="h-72 pointer-events-none -ml-8">
+                        
+                            
+                        
+        
+                </div>
+
                 @foreach ($question as $itemquestion)
                     <div
                         class="question-card w-[680px] mb-2 pb-[20px] max-h-[180px] rounded-lg shadow-lg bg-[#ffffff] border-slate-300 p-4">
@@ -74,7 +84,7 @@
                                         {{ $itemquestion->point }}
                                     </h1>
                                 </div>
-                            </div>
+                            </div> 
 
                             <div class="answerandblank flex justify-end items-end cursor-pointer">
 
@@ -112,13 +122,17 @@
                                         </h1>
                                     </li>
                                     <li class="mb-2">
-                                        <p
-                                            class="font-semibold bg-gradient-to-r from-amber-300 to-yellow-500 pl-[12px] rounded-lg">
-                                            Beginner</p>
+                                        <div class="pangkats flex items-center bg-gradient-to-r p-2 rounded-xl from-amber-300 to-yellow-500">
+                                            <i class="fa-sharp fa-solid fa-crown pointer-events-none items-center bg-gradient-to-r from-slate-300 to-slate-600 text-transparent bg-clip-text"></i>
+                                            <p
+                                                class="font-semibold pl-2 rounded-lg flex justify-center">
+                                                Beginner</p>
+
+                                        </div>
                                     </li>
                                     <h1
-                                        class="point mb-2 bg-slate-200 p-2 rounded-lg font-bold flex items-center gap-[1.6px]">
-                                        <img src="./images/connexsoftlogomobile.png" alt="tes" class="h-4">
+                                        class="point mb-2 bg-slate-200 p-2 rounded-lg font-bold flex items-center gap-[1.6px] justify-center">
+                                        <img src="./images/connexsoftlogomobile.png" alt="tes" class="h-4 pointer-events-none">
                                         3450
                                     </h1>
                                 </ul>

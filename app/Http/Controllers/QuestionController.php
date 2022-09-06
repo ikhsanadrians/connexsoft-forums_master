@@ -47,7 +47,7 @@ class QuestionController extends Controller
     public function showdetailsquestion($id)
     {
 
-        $questions = Question::with('answers')->findOrFail($id);
+        $questions = Question::with('answers','user')->findOrFail($id);
         return view('questiondetail',compact('questions'));
 
     }

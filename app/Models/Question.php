@@ -33,4 +33,8 @@ class Question extends Model
     return $this->hasMany(Report::class);
    }
 
+   public function userRank(){
+     return $this->hasOneThrough(UserRank::class,User::class);
+   }
+
 }
