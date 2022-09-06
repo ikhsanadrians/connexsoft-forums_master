@@ -8,6 +8,7 @@ use App\Models\UserRank;
 use App\Models\Question;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -37,6 +38,21 @@ class HomeController extends Controller
 
 
         return view('home',compact('category','question','points','counts'));
+    }
+
+
+    public function create(Request $request) {
+         $user = Auth::user()->id;
+         $question = $request->question;
+         $points = $request->point;
+         Question::create([
+            'user_id' => $user,
+            'title' => $question,
+            'point' => $points,
+         ]);
+
+         return redirect('/');
+      
     }
 
 

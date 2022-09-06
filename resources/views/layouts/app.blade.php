@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Connexsoft Forums | Forum For Developers!</title>
-    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="{{ asset('auth.css') }}">
     <link rel="icon" href="./images/connexsoftlogomobile.png">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -211,7 +211,7 @@
 
         </header>
 
-        <main class="py-4 bg-[#f1f3f2]" style=" font-family: 'Plus Jakarta Sans', sans-serif;">
+        <main class="py-4" style=" font-family: 'Plus Jakarta Sans', sans-serif;">
             @yield('contents')
         </main>
     </div>

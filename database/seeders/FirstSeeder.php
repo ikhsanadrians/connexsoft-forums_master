@@ -58,6 +58,12 @@ class FirstSeeder extends Seeder
           "Password" => Hash::make("ferdisusamogus"),
         ]);
 
+        User::create([
+          "Name" => "Fadiyaiu",
+          "Username" => "fadiyaiu",
+          "Email" => "fadiya@gmail.com",
+          "Password" => Hash::make("fadiya123"),
+        ]);
 
         Role::create(["name" => "Pengguna"]);
         Role::create(["name" => "Moderator"]);

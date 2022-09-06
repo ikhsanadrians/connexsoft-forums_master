@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,11 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/home',[App\Http\Controllers\HomeController::class,'create'])->name('homepost');
+Route::post('/',[App\Http\Controllers\HomeController::class,'create'])->name('homepost');
 Route::get('/question/{id}',[App\Http\Controllers\QuestionController::class,'showdetailsquestion']);

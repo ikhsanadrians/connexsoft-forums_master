@@ -89,11 +89,11 @@
                             <div class="answerandblank flex justify-end items-end cursor-pointer">
 
                                 <div
-                                    class="self-end flex mt-[12px] border-[1.2px] border-slate-300 hover:bg-slate-300 p-2 rounded-2xl">
-                                    <span class="material-symbols-outlined text-zinc-500">
+                                    class="self-end flex mt-[12px] border-[1.2px] border-slate-300 hover:bg-slate-300 pt-2 pb-2 pl-4 pr-4 rounded-2xl">
+                                    <span class="material-symbols-outlined text-zinc-500 font-medium">
                                         history_edu
                                     </span>
-                                    <h1 class="font-semibold text-zinc-500">Answer</h1>
+                                    <h1 class="font-medium text-zinc-500">Answer</h1>
                                 </div>
 
 
@@ -224,7 +224,8 @@
         </div>
 
     </div>
-
+    <form action="{{ route('homepost') }}" method="POST">
+        @csrf
     <div class="question-modals flex justify-center">
         <div
             class="question-modals-inner nonactive  z-20 bg-slate-100 p-6 rounded-lg top-1/4 shadow-lg h-[440px] w-1/2 absolute">
@@ -235,7 +236,7 @@
                 </span>
             </div>
             <div class="question-input mb-2">
-                <textarea placeholder="Type your Question Here" style="resize:none" rows="4" cols="74"
+                <textarea name="question" placeholder="Type your Question Here" style="resize:none" rows="4" cols="74"
                     class="placeholder:text-slate-400 h-[200px] p-2 rounded-lg focus:outline-none focus:outline-cyan-400 bg-slate-200 "></textarea>
             </div>
             <div class="upload-image-preview nonactive h-6 pt-2 pb-2 pl-4 pr-4 mb-4 bg-gradient-to-r rounded-lg bg-slate-200 items-center"
@@ -253,9 +254,11 @@
 
             </div>
             <div class="question-selects flex gap-4 mb-4">
+             
                 <div class="question-category">
+                    
                     <select
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2" name="category">
                         <option>Select Category</option>
                         @foreach ($category as $itemcategory)
                             <option value="{{ $itemcategory->id }}">{{ $itemcategory->name }}</option>
@@ -263,7 +266,7 @@
                     </select>
                 </div>
                 <div class="point-select ">
-                    <select name="" id=""
+                    <select name="point" id=""
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2">
 
                         @for ($i = 10; $i < $counts; $i++)
@@ -288,6 +291,7 @@
                         You Have 65 Points
                     </p>
                 </div>
+         
             </div>
             <button type="submit"
                 class="flex mt-2 items-center pt-2 pb-2 pr-4 pl-4 rounded-2xl font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:opacity-80">
@@ -296,8 +300,10 @@
                 </span>
                 Ask Your Question
             </button>
+        
         </div>
     </div>
+</form>
     <div class="backdrop nonactive bg-sky-600/50 w-full absolute top-[83px] -mt-2 mb-4" style="z-index: 10; height:100%">
 
     </div>

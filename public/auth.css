@@ -5,14 +5,9 @@
 
 }
 
-@font-face {
-    font-family: 'Plus Jakarta Santuy';
-    src: url('/public/fonts/jakarta.ttf');
-}
-
 
 body{
-
+    font-family: 'Plus Jakarta Sans', sans-serif;
     height: 100vh;
     min-height: 100vh;
 	background-color: #f1f3f2;
