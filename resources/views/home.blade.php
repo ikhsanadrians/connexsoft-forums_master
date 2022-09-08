@@ -229,7 +229,7 @@
     </div>
     <form action="{{ route('homepost') }}" method="POST">
         @csrf
-        <div class="question-modals flex justify-center">
+        <div class="question-modals sticky-top-100 flex justify-center">
             <div
                 class="question-modals-inner nonactive  z-20 bg-slate-100 p-6 rounded-lg top-1/4 shadow-lg h-[440px] w-1/2 absolute">
                 <div class="question-title flex justify-between mb-2">
@@ -238,11 +238,11 @@
                         close
                     </span>
                 </div>
-                <div class="question-input mb-2">
+                <div class="questions-input mb-2">
                     <textarea name="question" placeholder="Type your Question Here" style="resize:none" rows="4" cols="74"
                         class="placeholder:text-slate-400 h-[200px] p-2 rounded-lg focus:outline-none focus:outline-cyan-400 bg-slate-200 "></textarea>
                 </div>
-                <div class="upload-image-preview nonactive h-6 pt-2 pb-2 pl-4 pr-4 mb-4 bg-gradient-to-r rounded-lg bg-slate-200 items-center"
+                <div class="upload-image-preview nonactive h-6 pt-2 pb-2 pl-4 pr-4 mb-4 bg-gradient-to-r rounded-lg bg-slate-200  items-center"
                     style="max-width:100%">
                     <div class="imgandname flex items-center justify-around h-full gap-4 w-full">
                         <div class="imgandp flex w-full gap-2">
@@ -313,5 +313,5 @@
 
     </div>
 
-    <script src="./js/home.js"></script>
+    <script src="{{ asset('js/home.js') }}"></script>
 @endsection

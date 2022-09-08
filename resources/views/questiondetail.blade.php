@@ -72,20 +72,87 @@
 
 
                         <!-- The button to open modal -->
-                        <label for="my-modal-5" class="btn modal-button">open modal</label>
+                        <!-- The button to open modal -->
+                        <label for="my-modal-3" class="btn modal-button">Add Answers</label>
 
-                        <input type="checkbox" id="my-modal-5" class="modal-toggle" />
+                        <!-- Put this part before </body> tag -->
+                        <input type="checkbox" id="my-modal-3" class="modal-toggle" />
                         <div class="modal">
-                            <div class="modal-box w-6/12 max-w-5xl">
-                                <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
-                                <p class="py-4">You've been selected for a chance to get one year of subscription to use
-                                    Wikipedia for free!</p>
-                                <div class="modal-action">
-                                    <label for="my-modal-5" class="btn">Yay!</label>
+                            <div class="modal-box w-11/12 max-w-5xl">
+                                <label for="my-modal-3"
+                                    class="absolute right-4 text-2xl top-2 hover:text-red-600 duration-200">✕</label>
+                                <h3 class="text-2xl font-bold">Answers</h3>
+                                <div class="inputs w-full mt-4">
+                                    <textarea name="" id="" cols="70" rows="10"
+                                        class="p-2 w-full focus:outline-sky-600 focus:outline-none bg-slate-200 rounded-2xl"
+                                        placeholder="Type Your Answers Here" autocomplete="false" spellcheck="false"></textarea>
                                 </div>
+                                <div class="inputandpoints  mt-4 flex justify-between items-center">
+                                    <div class="inputuploads flex items-center">
+                                        <div class="formating-text flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-slate-500 cursor-pointer ">
+                                                format_underlined
+                                            </span>
+                                            <span class="material-symbols-outlined text-slate-500 cursor-pointer">
+                                                text_format
+                                            </span>
+                                            <span class="material-symbols-outlined text-slate-500 cursor-pointer">
+                                                format_size
+                                            </span>
+                                            <span class="material-symbols-outlined text-slate-500 cursor-pointer">
+                                                format_bold
+                                            </span>
+                                            <span
+                                                class="material-symbols-outlined text-slate-500 cursor-pointer items-center">
+                                                format_italic
+                                            </span>
+                                        </div>
+                                        <div class="inputfiles flex justify-between">
+                                            <div class="upload flex items-center cursor-pointer">
+                                                <input type="file" name="imageinputs" id="imageinputs"
+                                                    class="absolute opacity-0 w-6">
+                                                <span
+                                                    class="material-symbols-outlined cursor-pointer text-slate-500 hover:text-slate-600">
+                                                    attach_file
+                                                </span>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="upload-image-previews invisible h-6 pt-2 pb-2 pl-4 pr-4 bg-gradient-to-r rounded-lg bg-slate-200 flex items-center"
+                                            style="max-width:100%" id="bingkai">
+                                            <div class="imgandname flex items-center justify-around h-full gap-4 w-full">
+                                                <div class="imgandp flex items-center w-full gap-2">
+                                                    <img src="" alt="imgpreview" id="imagepreviews" class="h-6">
+                                                    <p id="imagesnames"></p>
+                                                </div>
+
+                                                <span
+                                                    class="buttonupload material-symbols-outlined cursor-pointer hover:opacity-80">
+                                                    close
+                                                </span>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="point-totals flex items-center">
+
+                                        <span class="material-symbols-outlined">
+                                            contact_support
+                                        </span>
+
+                                        <p class="text-sm flex-end">
+                                            You Will Get {{ $questions->point }} Points
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <button
+                                    class="answersbutton bg-gradient-to-r from-sky-400 to-blue-600 px-4 py-2 mt-4 rounded-2xl font-bold text-white">Answers</button>
                             </div>
                         </div>
-
                     </div>
                     <div
                         class="-mt-[2.4px] seeanswers bg-indigo-500 hover:bg-indigo-400 hover:text-slate-100 duration-200 text-white font-semibold pt-[.70rem] pb-[.70rem] pl-4 pr-4 flex gap-[3px] items-center rounded-2xl cursor-pointer">
@@ -134,4 +201,7 @@
             </div>
         </div>
     </div>
+
+
+    <script src="{{ asset('js/Answers.js') }}"></script>
 @endsection
