@@ -26,4 +26,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/home',[App\Http\Controllers\HomeController::class,'create'])->name('homepost');
 Route::post('/',[App\Http\Controllers\HomeController::class,'create'])->name('homepost');
-Route::get('/question/{id}/details',[App\Http\Controllers\QuestionController::class,'showdetailsquestion']);
+Route::get('/question/{id}/details',[App\Http\Controllers\QuestionController::class,'showdetailsquestion'])->name('detailsquestion');
+Route::post('/question/{id}/details',[App\Http\Controllers\AnswerController::class,'create'])->name('createanswers');

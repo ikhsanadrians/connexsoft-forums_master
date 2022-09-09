@@ -22,6 +22,12 @@ $('.buttonupload').click(function(){
     removeUploadFilePreview()
 })
 
+
+$('#closez').click(function(){
+    removeUploadFilePreview()
+})
+
+
 fileuploaded.addEventListener("change", (event) => {
 
     if (preview.classList.contains('invisible')) {
