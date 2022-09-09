@@ -73,19 +73,23 @@
 
                         <!-- The button to open modal -->
                         <!-- The button to open modal -->
-                        <label for="my-modal-3" class="btn modal-button">Add Answers</label>
+                        <label for="my-modal-3" class="btn modal-button rounded-2xl hover:opacity-80">Add Answers</label>
 
                         <!-- Put this part before </body> tag -->
                         <input type="checkbox" id="my-modal-3" class="modal-toggle" />
                         <div class="modal">
                             <div class="modal-box w-11/12 max-w-5xl">
                                 <label for="my-modal-3"
-                                    class="absolute right-4 text-2xl top-2 hover:text-red-600 duration-200">✕</label>
+                                    class="absolute right-4 text-2xl top-2 hover:text-red-600 duration-200"
+                                    id="closez">✕</label>
                                 <h3 class="text-2xl font-bold">Answers</h3>
                                 <div class="inputs w-full mt-4">
-                                    <textarea name="" id="" cols="70" rows="10"
-                                        class="p-2 w-full focus:outline-sky-600 focus:outline-none bg-slate-200 rounded-2xl"
-                                        placeholder="Type Your Answers Here" autocomplete="false" spellcheck="false"></textarea>
+                                    <form action="{{ route('createanswers', $questions->id) }}" method="post">
+                                        @csrf
+                                        <textarea name="contents" id="" cols="70" rows="10"
+                                            class="p-2 w-full focus:outline-sky-600 focus:outline-none bg-slate-200 rounded-2xl"
+                                            placeholder="Type Your Answers Here" autocomplete="false" spellcheck="false"></textarea>
+
                                 </div>
                                 <div class="inputandpoints  mt-4 flex justify-between items-center">
                                     <div class="inputuploads flex items-center">
@@ -109,8 +113,8 @@
                                         </div>
                                         <div class="inputfiles flex justify-between">
                                             <div class="upload flex items-center cursor-pointer">
-                                                <input type="file" name="imageinputs" id="imageinputs"
-                                                    class="absolute opacity-0 w-6">
+                                                {{-- <input type="file" name="imageinputs" id="imageinputs"
+                                                    class="absolute opacity-0 w-6"> --}}
                                                 <span
                                                     class="material-symbols-outlined cursor-pointer text-slate-500 hover:text-slate-600">
                                                     attach_file
@@ -152,6 +156,7 @@
                                 <button
                                     class="answersbutton bg-gradient-to-r from-sky-400 to-blue-600 px-4 py-2 mt-4 rounded-2xl font-bold text-white">Answers</button>
                             </div>
+                            </form>
                         </div>
                     </div>
                     <div
