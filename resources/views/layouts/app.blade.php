@@ -99,9 +99,9 @@
                             </div>
                         </div>
                         <div class="logout">
-                            <a href="{{ route('logout') }}"
+                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                            document.getElementById('logout-form') .submit();"
+                                document.getElementById('logout-form') .submit();"
                                 class="flex items-center">
                                 <span class="material-symbols-outlined text-slate-500">
                                     logout
@@ -213,7 +213,7 @@
 
         </header>
 
-        <main class="py-4" style=" font-family: 'Plus Jakarta Sans', sans-serif;">
+        <main class="py-4 bg-[#f1f3f2];" style=" font-family: 'Plus Jakarta Sans', sans-serif;">
             @yield('contents')
         </main>
     </div>

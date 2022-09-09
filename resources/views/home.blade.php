@@ -54,10 +54,10 @@
 
                 @foreach ($question as $itemquestion)
                     <div
-                        class="question-card w-[680px] mb-2 pb-[20px] max-h-[180px] rounded-lg shadow-lg bg-[#ffffff] border-slate-300 p-4">
+                        class="question-card w-[680px] mb-2 pb-[20px] max-h-[1800px] rounded-lg shadow-lg bg-[#ffffff] border-slate-300 p-4">
                         <div class="question-card-inner relative">
                             <div class="flex justify-between">
-                                <div class="userandtitle">
+                                <div class="userandtitle w-[75%]">
                                     <h1 class="profile flex items-center text-l text-zinc-500"><span
                                             class="material-symbols-outlined text-zinc-500 text-transparent bg-gradient-to-r cursor-pointer from-emerald-600 to-sky-500 bg-clip-text">
                                             person
@@ -73,11 +73,11 @@
                                         </span>
                                         <p>{{ Str::limit($itemquestion->category->name, 15) }}</p>
                                     </h1>
-                                    <h1 class="font-bold text-xl text-slate-700"><a
+                                    <h1 class="font-medium text-xl text-slate-700"><a
                                             href="{{ url('/question/' . $itemquestion->id . '' . '/details') }}">{{ $itemquestion->title }}</a>
                                     </h1>
                                 </div>
-                                <div class="point flex">
+                                <div class="point">
 
                                     <h1
                                         class="point pt-[0.8px] pb-[0.8px] pr-[5px] pl-[5px] rounded-2xl font-bold cursor-pointer flex items-center gap-[1.2px]">
