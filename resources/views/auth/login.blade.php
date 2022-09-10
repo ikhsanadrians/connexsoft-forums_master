@@ -114,7 +114,7 @@
                                 <div class="lines-2 h-[1.2px] bg-slate-400 w-16 invisible lg:visible"></div>
                             </div>
                             <div class="register-button flex justify-center mt-6">
-                                <a href="/register"
+                                <a href="{{ route('register') }}"
                                     class="bg-gradient-to-r from-cyan-400 to-green-600 text-white pt-2 pb-2 pr-8 pl-8 rounded-md">Register</a>
                             </div>
 
