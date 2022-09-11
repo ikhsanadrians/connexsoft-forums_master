@@ -63,7 +63,7 @@ public function userrank(){
     public function reports(){
         return $this->hasMany(Report::class);
     }
-   
+
     public function ratings(){
         return $this->hasMany(Rating::class);
     }
