@@ -5,6 +5,10 @@
 
 }
 
+#app {
+    height:100vh;
+    background-color: #f1f3f2;
+}
 
 body{
     font-family: 'Plus Jakarta Sans', sans-serif;

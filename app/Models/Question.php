@@ -34,12 +34,17 @@ class Question extends Model
     return $this->hasMany(Report::class);
    }
 
-   public function userRank(){
-     return $this->hasOneThrough(UserRank::class,User::class);
-   }
+
 
    public function category(){
     return $this->belongsTo(Category::class);
 }
+
+
+public function roleuser(){
+    return $this->hasManyThrough(RoleUser::class,User::class);
+   }
+
+
 
 }

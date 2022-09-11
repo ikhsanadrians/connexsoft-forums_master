@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.apps')
 
 
 
-@section('contents')
-    <div class="container flex gap-6 w-full pl-24 h-full pr-18">
+@section('content')
+    <div class="container flex gap-6 w-full pl-24 h-full pr-18 mt-4">
         <div
             class="faq w-[25%] order-2 h-[200px] border border-gray-200  shadow-lg rounded-lg bg-[#ffffff] items-center flex justify-center">
             <div class="faq-profile p-4">
@@ -21,7 +21,7 @@
 
                                 <p
                                     class="flex justify-center font-semibold bg-gradient-to-r from-amber-300 to-yellow-500 rounded-lg">
-                                    Beginner</p>
+                                    {{ Auth::user()->userrank->rank->name }}</p>
                             </li>
                             <h1
                                 class="point mb-2 bg-slate-200 p-2 rounded-lg font-bold flex justify-center items-center gap-[1.6px]">
@@ -39,13 +39,13 @@
         <div class="questionandanswers w-[75%]">
 
             <div
-                class="details-card flex flex-col gap-4 w-full mb-2 pb-[20px] h-[300px] rounded-lg shadow-lg bg-[#ffffff] border-slate-300 p-4">
+                class="details-card flex flex-col gap-4 w-full mb-2 pb-[20px] h-[300px] rounded-lg shadow-lg bg-[#ffffff] border-[1.1px] border-slate-200 p-4">
                 <div class="details-profiles flex gap-2">
                     <div class="imgandname flex gap-2 items-center">
                         <img src="{{ asset('images/dani.png') }}" alt="dany" class="h-12 flex items-center">
                         <div class="details-description flex-col items-center">
                             <p class="">{{ $questions->user->username }}</p>
-                            <p class="text-sm">Beginner</p>
+                            <p class="text-sm">{{ $questions->user->userrank->rank->name }}</p>
                         </div>
 
                     </div>
@@ -184,18 +184,28 @@
 
                 </div>
             </div>
-            <div class="answers bg-white w-full h-full rounded-md shadow-lg">
+            <div class="answers w-full max-h-full border-[1.1px] border-slate-200 rounded-md shadow-lg">
 
                 <div class="answerswrapper">
-                    <div class="title-answers bg-slate-90">
+                    <div class="title-answers">
 
-                        <h1 class="font-bold text-2xl ">Answers</h1>
+                        <h1 class="font-bold text-xl p-4 text-slate-700">Answers</h1>
                     </div>
 
                     @foreach ($questions->answers as $question)
-                        <div class="answers-inner p-4 max-w-full bg-slate-100">
-                            <div class="h3">{{ $question->user->name }}</div>
-                            <h1>{{ $question->content }}</h1>
+                        <div class="answers-inner p-4 max-w-full">
+                            <div class="username flex items-center gap-4">
+                                <img src="{{ asset('images/orangs/ferisdolpin.png') }}" alt="" class="h-12">
+                                <div class="usernameandroles">
+                                    <h3 class="font-bold">{{ $question->user->username }}</h3>
+                                    <h3>{{ $question->user->userrank->rank->name }}</h3>
+                                </div>
+
+                            </div>
+                            <div class="content mt-4">
+
+                                <h1>{{ $question->content }}</h1>
+                            </div>
                         </div>
                     @endforeach
                 </div>

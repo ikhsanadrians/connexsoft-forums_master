@@ -213,7 +213,7 @@
 
         </header>
 
-        <main class="py-4" style=" font-family: 'Plus Jakarta Sans', sans-serif;">
+        <main class="py-4 bg-[#f1f3f2]" style=" font-family: 'Plus Jakarta Sans', sans-serif;">
             @yield('contents')
         </main>
     </div>
