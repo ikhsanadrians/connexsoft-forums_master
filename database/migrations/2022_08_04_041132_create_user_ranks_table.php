@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('user_ranks', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->foreignId('rank_id')->constrained();
+            $table->foreignId('rank_id')->constrained()->default(0);
             $table->foreignId("user_id")->constrained();
             $table->timestamps();
         });
