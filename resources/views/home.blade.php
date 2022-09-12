@@ -127,8 +127,10 @@
                                             class="pangkats flex items-center bg-gradient-to-r p-2 rounded-xl from-amber-300 to-yellow-500">
                                             <i
                                                 class="fa-sharp fa-solid fa-crown pointer-events-none items-center bg-gradient-to-r from-slate-300 to-slate-600 text-transparent bg-clip-text"></i>
-                                            <p class="font-semibold pl-2 rounded-lg flex justify-center">
-                                                Beginner</p>
+                                            <p class="font-bold text-center flex justify-center">
+                                                {{ Auth::user()->userrank->rank->name }}</p>
+
+
 
                                         </div>
                                     </li>

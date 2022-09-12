@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.apps')
 
 
 
-@section('contents')
-    <div class="container flex gap-6 w-full pl-24 h-full pr-18">
+@section('content')
+    <div class="container flex gap-6 w-full pl-24 h-full pr-18 mt-4">
         <div
             class="faq w-[25%] order-2 h-[200px] border border-gray-200  shadow-lg rounded-lg bg-[#ffffff] items-center flex justify-center">
             <div class="faq-profile p-4">
@@ -21,7 +21,7 @@
 
                                 <p
                                     class="flex justify-center font-semibold bg-gradient-to-r from-amber-300 to-yellow-500 rounded-lg">
-                                    Beginner</p>
+                                    {{ Auth::user()->userrank->rank->name }}</p>
                             </li>
                             <h1
                                 class="point mb-2 bg-slate-200 p-2 rounded-lg font-bold flex justify-center items-center gap-[1.6px]">
@@ -39,13 +39,13 @@
         <div class="questionandanswers w-[75%]">
 
             <div
-                class="details-card flex flex-col gap-4 w-full mb-2 pb-[50px] max-h-[900px] rounded-lg shadow-lg bg-[#ffffff] border-slate-300 p-4">
+                class="details-card flex flex-col gap-4 w-full mb-2 pb-[20px] h-[300px] rounded-lg shadow-lg bg-[#ffffff] border-slate-300 p-4">
                 <div class="details-profiles flex gap-2">
                     <div class="imgandname flex gap-2 items-center">
                         <img src="{{ asset('images/dani.png') }}" alt="dany" class="h-12 flex items-center">
                         <div class="details-description flex-col items-center">
                             <p class="">{{ $questions->user->username }}</p>
-                            <p class="text-sm">Beginner</p>
+                            <p class="text-sm">{{ $questions->user->userrank->rank->name }}</p>
                         </div>
 
                     </div>
@@ -72,40 +72,24 @@
 
 
                         <!-- The button to open modal -->
-<<<<<<< HEAD
-                      <!-- The button to open modal -->
-                <label for="my-modal-3" class="btn modal-button rounded-2xl gap-2 flex items-center"><span class="material-symbols-outlined flex items-center">
-                 edit_square
-                 </span>Answers</label>
-
-<!-- Put this part before </body> tag -->
-        <input type="checkbox" id="my-modal-3" class="modal-toggle" />
-        <div class="modal w-full">
-            <div class="modal-box relative w-11/12 h-[600px] max-w-3xl" >
-             <label for="my-modal-3" class="p-2 absolute right-2 top-2">✕</label>
-            <h3 class="text-lg font-bold ml-4">Answer</h3>
-             <div class="input w-full">
-                <textarea name="question" placeholder="Type your Question Here" style="resize:none" rows="4" cols="90"
-                        class="placeholder:text-slate-400 w-full h-[200px] p-2 rounded-lg focus:outline-none focus:outline-cyan-400 bg-slate-200 "></textarea>
-             </div>
-             </div>
-                </div>
-
-=======
-                        <!-- The button to open modal -->
-                        <label for="my-modal-3" class="btn modal-button">Add Answers</label>
+                       
+                        <label for="my-modal-3" class="btn modal-button rounded-2xl hover:opacity-80">Add Answers</label>
 
                         <!-- Put this part before </body> tag -->
                         <input type="checkbox" id="my-modal-3" class="modal-toggle" />
                         <div class="modal">
                             <div class="modal-box w-11/12 max-w-5xl">
                                 <label for="my-modal-3"
-                                    class="absolute right-4 text-2xl top-2 hover:text-red-600 duration-200">✕</label>
+                                    class="absolute right-4 text-2xl top-2 hover:text-red-600 duration-200"
+                                    id="closez">✕</label>
                                 <h3 class="text-2xl font-bold">Answers</h3>
                                 <div class="inputs w-full mt-4">
-                                    <textarea name="" id="" cols="70" rows="10"
-                                        class="p-2 w-full focus:outline-sky-600 focus:outline-none bg-slate-200 rounded-2xl"
-                                        placeholder="Type Your Answers Here" autocomplete="false" spellcheck="false"></textarea>
+                                    <form action="{{ route('createanswers', $questions->id) }}" method="post">
+                                        @csrf
+                                        <textarea name="contents" id="" cols="70" rows="10"
+                                            class="p-2 w-full focus:outline-sky-600 focus:outline-none bg-slate-200 rounded-2xl"
+                                            placeholder="Type Your Answers Here" autocomplete="false" spellcheck="false"></textarea>
+
                                 </div>
                                 <div class="inputandpoints  mt-4 flex justify-between items-center">
                                     <div class="inputuploads flex items-center">
@@ -129,8 +113,8 @@
                                         </div>
                                         <div class="inputfiles flex justify-between">
                                             <div class="upload flex items-center cursor-pointer">
-                                                <input type="file" name="imageinputs" id="imageinputs"
-                                                    class="absolute opacity-0 w-6">
+                                                {{-- <input type="file" name="imageinputs" id="imageinputs"
+                                                    class="absolute opacity-0 w-6"> --}}
                                                 <span
                                                     class="material-symbols-outlined cursor-pointer text-slate-500 hover:text-slate-600">
                                                     attach_file
@@ -172,8 +156,8 @@
                                 <button
                                     class="answersbutton bg-gradient-to-r from-sky-400 to-blue-600 px-4 py-2 mt-4 rounded-2xl font-bold text-white">Answers</button>
                             </div>
+                            </form>
                         </div>
->>>>>>> 669d1aed5caa3b152901d525ab6e0e5626348e56
                     </div>
                     <div
                         class="-mt-[2.4px] seeanswers bg-indigo-500 hover:bg-indigo-400 hover:text-slate-100 duration-200 text-white font-semibold pt-[.70rem] pb-[.70rem] pl-4 pr-4 flex gap-[3px] items-center rounded-2xl cursor-pointer">
@@ -203,9 +187,9 @@
             <div class="answers bg-white p-4 w-full h-full rounded-md shadow-lg">
 
                 <div class="answerswrapper">
-                    <div class="title-answers bg-slate-90">
+                    <div class="title-answers">
 
-                        <h1 class="font-bold text-2xl ">Answers</h1>
+                        <h1 class="font-bold text-xl p-4 text-slate-700">Answers</h1>
                     </div>
 
                     @foreach ($questions->answers as $question)

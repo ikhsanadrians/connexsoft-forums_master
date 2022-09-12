@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Answer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnswerController extends Controller
 {
@@ -22,9 +22,22 @@ class AnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(Request $request)
+     {
+
+         $user = Auth::user()->id;
+         $answers = $request->contents;
+         $questionid = $request->route('id');
+
+
+         Answer::create([
+           'user_id' => $user,
+           'content' => $answers,
+           'question_id'=> $questionid,
+
+         ]);
+
+         return redirect(route('detailsquestion',$questionid));
     }
 
     /**

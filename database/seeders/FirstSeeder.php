@@ -82,6 +82,7 @@ class FirstSeeder extends Seeder
     UserRank::create(["user_id" => 2, "rank_id" => 4]);
     UserRank::create(["user_id" => 4, "rank_id" => 6]);
 
+<<<<<<< HEAD
     Category::create(["name" => "Object Oriented Programming"]);
     Category::create(["name" => "Cloud Computing"]);
     Category::create(["name" => "Operating System"]);
@@ -89,6 +90,16 @@ class FirstSeeder extends Seeder
     Category::create(["name" => "Web Programming"]);
     Category::create(["name" => "User Interface"]);
     Category::create(["name" => "Laravel"]);
+=======
+
+        Category::create(["name" => "Object Oriented Programming" ]);
+        Category::create(["name" => "Cloud Computing" ]);
+        Category::create(["name" => "Operating System" ]);
+        Category::create(["name" => "Server Management" ]);
+        Category::create(["name" => "Web Programming" ]);
+        Category::create(["name" => "User Interface" ]);
+        Category::create(["name" => "Laravel" ]);
+>>>>>>> f2fdeb159e57cfe6a67e5001857901276f47758b
 
 
     Question::create(["title" => "Cara Ngoding Cepat", "category_id" => 2, "user_id" => 1, "point" => 69, "status" => "active"]);
