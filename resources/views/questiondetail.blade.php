@@ -193,13 +193,45 @@
                     </div>
 
                     @foreach ($questions->answers as $question)
-                        <div class="answers-inner p-4 max-w-full bg-slate-100 rounded-2xl mt-4">
+                        <div class="answers-inner p-4 max-w-full max-h-full bg-slate-100 rounded-2xl mt-4">
                             <div class="answers flex items-center gap-2">
                                 <img src="{{ asset('images/orangs/raya.png')}}" alt="profilepic" class="h-12">
-                                <div class="usersdetails">
-                                    <div class="font-bold">{{ $question->user->name }}</div>
-                                    <h1 class="bg-cyan-400 w-24 pl-8 rounded-xl">Pakar</h1>
+                                
+                                <div class="usersdetails flex gap-2">
+                                    <div class="font-bold">{{ $question->user->username }} | {{$question->created_at->diffForHumans()}}</div>
+                                   
+                                   @switch($question->user->userrank->rank->name)
+                                       @case('Pakar')
+                                       <div class="ranks bg-gradient-to-r from-sky-600 to-blue-700 px-4 py-[1.5px] rounded-xl order-2">
+                                        <h1 class="font-bold text-white">{{ $question->user->userrank->rank->name}}</h1>
+    
+                                    </div>
+                                       @break
+                                   
+                                       @case('Si Hebat')
+                                       <div class="ranks bg-gradient-to-r from-red-600 to-amber-500 px-4 py-[1.5px] rounded-xl order-2">
+                                        <h1 class="font-bold text-white">{{ $question->user->userrank->rank->name}}</h1>
+    
+                                         </div>
+
+                                         @break
+ 
+                                    @case('Gemar Membantu')
+                                    <div class="ranks bg-gradient-to-r from-emerald-400 to-amber-500 px-4 py-[1.5px] rounded-xl order-2">
+                                        <h1 class="font-bold text-white">{{ $question->user->userrank->rank->name}}</h1>
+    
+                                    </div>
+                                    @break
+
+                                       @default
+                                           
+                                   @endswitch 
+
+
+
+                                   
                                 </div>
+                              
                             </div>
                            <div class="content mt-4">
                                <h1>{{ $question->content }}</h1>
@@ -212,11 +244,12 @@
                               <div class="rate">
 
                                 <div class="rating">
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                                
+                                    <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" />
+                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400"/>
+                                    <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" />
+                                    <input type="radio" name="rating-4" class="mask mask-star-2 bg-orange-400" />
+                                    <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
                                   </div>
                               </div>
                            </div>

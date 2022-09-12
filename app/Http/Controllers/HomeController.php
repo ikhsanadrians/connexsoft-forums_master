@@ -32,14 +32,14 @@ class HomeController extends Controller
         $category = Category::all();
         $question = Question::with('user','category')->get();
         $user = Auth::user();
-        $users = $user::with('userrank')->get();
+        // $users = $user::with('userrank')->get();
         $points = range(10,110);
         $counts = count($points);
 
 
 
 
-        return view('home',compact('category','question','points','counts','users'));
+        return view('home',compact('category','question','points','counts'));
     }
 
 

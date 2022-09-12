@@ -124,7 +124,7 @@
                                     </li>
                                     <li class="mb-2">
                                         <div
-                                            class="pangkats flex items-center bg-gradient-to-r p-2 rounded-xl from-amber-300 to-yellow-500">
+                                            class="pangkats flex gap-2 items-center bg-gradient-to-r p-2 rounded-xl from-amber-300 to-yellow-500">
                                             <i
                                                 class="fa-sharp fa-solid fa-crown pointer-events-none items-center bg-gradient-to-r from-slate-300 to-slate-600 text-transparent bg-clip-text"></i>
                                             <p class="font-bold text-center flex justify-center">
