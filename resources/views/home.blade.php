@@ -125,10 +125,18 @@
                                     <li class="mb-2">
                                         <div
                                             class="pangkats flex gap-2 items-center bg-gradient-to-r p-2 rounded-xl from-amber-300 to-yellow-500">
-                                            <i
-                                                class="fa-sharp fa-solid fa-crown pointer-events-none items-center bg-gradient-to-r from-slate-300 to-slate-600 text-transparent bg-clip-text"></i>
-                                            <p class="font-bold text-center flex justify-center">
-                                                {{ Auth::user()->userrank->rank->name }}</p>
+                                            @if (Auth::user()->userrank == 0)
+                                                <div
+                                                    class="ranks bg-slate-300 border-2 border-slate-400  px-4 py-[1.5px] rounded-xl order-2">
+                                                    <h1 class="font-bold text-slate-600">Unranked</h1>
+
+                                                </div>
+                                            @else
+                                                <p class="font-bold text-center flex justify-center">
+                                                    {{ Auth::user()->userrank->rank->name }}
+                                                </p>
+                                            @endif
+
 
 
 
