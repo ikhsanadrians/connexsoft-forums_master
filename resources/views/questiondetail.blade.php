@@ -24,17 +24,72 @@
                                 </h1>
 
                             <li class="mb-2">
-
-                                @if (Auth::user()->userrank == 0)
-                                    <div
-                                        class="ranks bg-slate-300 border-2 border-slate-400  px-4 py-[1.5px] rounded-xl order-2">
-                                        <h1 class="font-bold text-slate-600">Unranked</h1>
-
-                                    </div>
+                                @if (!Auth::user()->userrank)
+                                    <h1 class="font-bold text-slate-600">Unranked</h1>
                                 @else
-                                    <p
-                                        class="flex justify-center font-semibold bg-gradient-to-r from-amber-300 to-yellow-500 rounded-lg">
-                                        {{ Auth::user()->userrank->rank->name }}</p>
+                                    @switch(Auth::user()->userrank->rank->name)
+                                        @case('Pakar')
+                                            <div
+                                                class="ranks bg-gradient-to-r from-sky-600 to-blue-700 px-4 py-[1.5px] rounded-xl order-2">
+                                                <h1 class="font-bold text-white">
+                                                    {{ Auth::user()->userrank->rank->name }}
+                                                </h1>
+
+                                            </div>
+                                        @break
+
+                                        @case('Si Hebat')
+                                            <div
+                                                class="ranks bg-gradient-to-r from-red-600 to-amber-500 px-4 py-[1.5px] rounded-xl order-2">
+                                                <h1 class="font-bold text-white">
+                                                    {{ Auth::user()->userrank->rank->name }}
+                                                </h1>
+
+                                            </div>
+                                        @break
+
+                                        @case('Gemar Membantu')
+                                            <div
+                                                class="ranks bg-gradient-to-r from-emerald-400 to-amber-500 px-4 py-[1.5px] rounded-xl order-2">
+                                                <h1 class="font-bold text-white">
+                                                    {{ Auth::user()->userrank->rank->name }}
+                                                </h1>
+
+                                            </div>
+                                        @break
+
+                                        @case('Terpelajar')
+                                            <div
+                                                class="ranks bg-gradient-to-r from-amber-600 to-lime-600 px-4 py-[1.5px] rounded-xl order-2">
+                                                <h1 class="font-bold text-white">
+                                                    {{ Auth::user()->userrank->rank->name }}
+                                                </h1>
+
+                                            </div>
+                                        @break
+
+                                        @case('Pemula')
+                                            <div
+                                                class="ranks bg-gradient-to-r from-slate-200 to-zinc-400 px-4 py-[1.5px] rounded-xl order-2">
+                                                <h1 class="font-bold text-white">
+                                                    {{ Auth::user()->userrank->rank->name }}
+                                                </h1>
+
+                                            </div>
+                                        @break
+
+                                        @case('Ambisius')
+                                            <div
+                                                class="ranks bg-gradient-to-r from-red-300 to-amber-300 px-4 py-[1.5px] rounded-xl order-2">
+                                                <h1 class="font-bold text-white">
+                                                    {{ Auth::user()->userrank->rank->name }}
+                                                </h1>
+
+                                            </div>
+                                        @break
+
+                                        @default
+                                    @endswitch
                                 @endif
                             </li>
                             <h1
@@ -59,7 +114,7 @@
                         <img src="{{ asset('images/dani.png') }}" alt="dany" class="h-12 flex items-center">
                         <div class="details-description flex-col items-center">
                             <p class="">{{ $questions->user->username }}</p>
-                            @if (!$questions->user->userrank->rank)
+                            @if (!$questions->user->userrank)
                                 <p class="text-sm">Unranked</p>
                             @else
                                 <p class="text-sm">{{ $questions->user->userrank->rank->name }}</p>
