@@ -10,7 +10,7 @@
 
     <title>Connexsoft Forums | Forum For Developers!</title>
     <link rel="stylesheet" href="{{ asset('auth.css') }}">
-    <link rel="icon" href="./images/connexsoftlogomobile.png">
+    <link rel="icon" href="{{ asset('connexsoftlogomobile.png') }}">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <script src="https://kit.fontawesome.com/43dc946da1.js" crossorigin="anonymous"></script>
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         <div class="logout">
-                             <a href="{{ route('logout') }}"
+                            <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form') .submit();"
                                 class="flex items-center">

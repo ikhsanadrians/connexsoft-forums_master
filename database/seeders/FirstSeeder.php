@@ -48,6 +48,7 @@ class FirstSeeder extends Seeder
     User::create([
       "Name" => "Feris Al-Dolphine",
       "Username" => "dolpineris",
+      "profilepicture" => "asset('images/orangs/ferisdolpin.png')",
       "Email" => "dolphineferis@gmail.com",
       "Password" => Hash::make("ferisaldolpin"),
     ]);

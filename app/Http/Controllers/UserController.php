@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -11,10 +12,25 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+
+        $users = User::findOrFail($id);
+         return view('profiledetails',compact('users'));
+
     }
+
+    public function changeProfilePicture(Request $request){
+      $filenames = $request->images->getClientOriginalName();
+      $request->image->storeAs('profilpic',$filenames);
+
+
+
+
+
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

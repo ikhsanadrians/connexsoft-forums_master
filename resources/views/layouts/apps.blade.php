@@ -10,7 +10,7 @@
 
     <title>Connexsoft Forums | Forum For Developers!</title>
     <link rel="stylesheet" href="{{ asset('css/mains.css') }}">
-    <link rel="icon" href="./images/connexsoftlogomobile.png">
+    <link rel="icon" href="{{ asset('connexsoftlogomobile.png') }}">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <script src="https://kit.fontawesome.com/43dc946da1.js" crossorigin="anonymous"></script>
@@ -211,7 +211,7 @@
 
     </header>
 
-    <section class="contents">
+    <section class="contents w-full h-full">
         @yield('content')
 
     </section>

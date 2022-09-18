@@ -114,12 +114,13 @@
                     <div class="faq-profile p-4">
                         <div class="profileandimages flex justify-center items-center gap-2">
                             <div class="faq-images">
-                                <img src="./images/dani.png" alt="dany" class="h-24">
+                                <img src="{{ Auth::user()->profilepicture }}" alt="dany" class="h-24">
                             </div>
                             <div class="faq-description flex-col">
                                 <ul>
                                     <li class="mb-2">
-                                        <h1 class="text-xl font-semibold">{{ Auth::user()->username }}
+                                        <h1 class="text-xl font-semibold"><a
+                                                href="{{ url('/user/' . Auth::user()->id . '' . '/details') }}">{{ Auth::user()->username }}</a>
                                         </h1>
                                     </li>
                                     <li class="mb-2">
