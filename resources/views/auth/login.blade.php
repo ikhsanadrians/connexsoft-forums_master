@@ -15,7 +15,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link href="https://fonts.googleapis.com/css?family=PlusJakartaSans" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
     @vite('resources/css/app.css')
@@ -69,6 +69,10 @@
                                 <input type="password" id="password" placeholder="Enter Your Password" name="password"
                                     class="@error('password') is-invalid @enderror relative h-10 w-[360px] border-[1.2px] z-8 border-slate-300 rounded-lg pl-10 pb-[1.2px] outline-none focus:border-sky-600 focus:shadow-lg focus:shadow-sky-400/30 text-[16px]"
                                     required autocomplete="current-password">
+                                <span class="material-symbols-outlined absolute mt-2 -ml-8 cursor-pointer"
+                                    id="showpass">
+                                    visibility
+                                </span>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -129,6 +133,8 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('js/login.js') }}"></script>
 </body>
 
 </html>

@@ -72,3 +72,5 @@ fileuploaded.addEventListener("change", (event) => {
     previewimg.src = img
 
 })
+
+
