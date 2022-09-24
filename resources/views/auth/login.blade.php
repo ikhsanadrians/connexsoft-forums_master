@@ -10,6 +10,10 @@
 
     <title>{{ config('app.name', 'Connexsoft Forums') }}</title>
     <link rel="stylesheet" href="auth.css">
+    <script src="https://kit.fontawesome.com/43dc946da1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css"
+        integrity="sha512-RvQxwf+3zJuNwl4e0sZjQeX7kUa3o82bDETpgVCH2RiwYSZVDdFJ7N/woNigN/ldyOOoKw8584jM4plQdt8bhA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="stylesheet"
@@ -69,10 +73,9 @@
                                 <input type="password" id="password" placeholder="Enter Your Password" name="password"
                                     class="@error('password') is-invalid @enderror relative h-10 w-[360px] border-[1.2px] z-8 border-slate-300 rounded-lg pl-10 pb-[1.2px] outline-none focus:border-sky-600 focus:shadow-lg focus:shadow-sky-400/30 text-[16px]"
                                     required autocomplete="current-password">
-                                <span class="material-symbols-outlined absolute mt-2 -ml-8 cursor-pointer"
-                                    id="showpass">
-                                    visibility
-                                </span>
+                                <i class="fa-regular fa-eye absolute mt-2 text-slate-500 -ml-8 text-xl"
+                                    id="showpass"></i>
+
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
