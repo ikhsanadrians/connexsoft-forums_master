@@ -20,13 +20,20 @@ class UserController extends Controller
 
     }
 
-    public function changeProfilePicture(Request $request){
-      $filenames = $request->images->getClientOriginalName();
-      $request->image->storeAs('profilpic',$filenames);
+    public function changeProfilePicture(Request $request,$id){
 
+      $validatedData = $request->validate([
+        'image' => 'image|file|max:5024'
+      ]);
 
+      $filenames = $request->image->getClientOriginalName();
+      $request->image->storeAs('profilpicture',$filenames);
 
+      User::find($id)->update([
+        'profilepicture' => $filenames,
+      ]);
 
+      return redirect(route('profileindex',$id));
 
     }
 
