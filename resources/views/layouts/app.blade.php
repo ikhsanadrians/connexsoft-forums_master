@@ -88,7 +88,7 @@
                                         v-pre>{{ Auth::user()->username }}</a></p>
                             </div>
                         </div>
-                        <div id="asknav"
+                        <label for="my-modal-3"
                             class="ask cursor-pointer hover:opacity-80 bg-gradient-to-r from-cyan-500 to-blue-500 pt-[3.9px] pb-[3.9px] pl-2 pr-2 rounded-2xl">
                             <div class="flex items-center gap-[1.2px]">
                                 <span class="material-icons text-slate-200">
@@ -97,7 +97,7 @@
 
                                 <p class="font-bold text-white">Ask</p>
                             </div>
-                        </div>
+                        </label>
                         <div class="logout">
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
@@ -216,6 +216,7 @@
         <main class="py-4 bg-[#f1f3f2]" style=" font-family: 'Plus Jakarta Sans', sans-serif;">
             @yield('contents')
         </main>
+
     </div>
 
 </body>

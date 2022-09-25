@@ -212,13 +212,13 @@
                     </div>
 
                 </div>
-                <div id="buttonaskbody"
+                <label for="my-modal-3"
                     class="buttonask flex gap-[1.8px] justify-center mt-4 font-bold text-white bg-gradient-to-r from-red-500 to-red-600 hover:bg-gradient-to-r hover:from-red-600 hover:to-red-500 p-2 rounded-2xl cursor-pointer duration-500">
                     <span class="material-icons text-slate-200">
                         front_hand
                     </span>
                     Ask Question
-                </div>
+                </label>
                 <div class="rankcard w-full h-[300px] rounded-lg bg-[#ffffff] shadow-2xl mt-8">
                     <div class="rankcard-title flex justify-center pt-4 text-[20px] font-bold items-center ">
                         <span class="material-symbols-outlined text-[30px] text-yellow-600">
@@ -302,7 +302,73 @@
             </ul>
         </div>
     @endif
+
+    <!-- The button to open modal -->
+
+
     <form action="{{ route('homepost') }}" method="POST">
+        @csrf
+        <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+        <div class="modal">
+            <div class="modal-box h-[440px] w-11/12 max-w-3xl">
+                <label for="my-modal-3" class="text-slate-800 hover:text-red-500 absolute right-2 top-2">✕</label>
+                <h1 class="font-bold">Ask a question about your Problems!</h1>
+                <div class="questions-input mt-2 mb-2">
+                    <textarea name="question" placeholder="Type your Question Here" style="resize:none" rows="4" cols="80"
+                        class="placeholder:text-slate-400 h-[200px] w-full p-2 rounded-lg focus:outline-none focus:outline-cyan-400 bg-slate-200 "></textarea>
+                </div>
+                <div class="question-selects flex gap-4 mb-4">
+
+                    <div class="question-category">
+
+                        <select
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2"
+                            name="category">
+                            <option>Select Category</option>
+                            @foreach ($category as $itemcategory)
+                                <option value="{{ $itemcategory->id }}">{{ $itemcategory->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="point-select ">
+                        <select name="point" id=""
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-400 focus:border-cyan-500 block w-full p-2">
+
+                            @for ($i = 10; $i < $counts; $i++)
+                                <option>{{ $i }}</option>
+                            @endfor
+
+                        </select>
+                    </div>
+                    <div class="upload flex items-center cursor-pointer">
+                        <input type="file" name="imageinputs" id="imageinput" class="absolute opacity-0 w-6">
+                        <span class="material-symbols-outlined cursor-pointer hover:text-slate-600">
+                            attach_file
+                        </span>
+                    </div>
+
+                    <div class="point-totals flex items-center">
+                        <span class="material-symbols-outlined">
+                            contact_support
+                        </span>
+
+                        <p class="text-sm">
+                            You Have 65 Points
+                        </p>
+                    </div>
+
+                </div>
+                <button type="submit"
+                    class="flex mt-2 items-center pt-2 pb-2 pr-4 pl-4 rounded-2xl font-bold text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:opacity-80">
+                    <span class="material-icons text-slate-200">
+                        front_hand
+                    </span>
+                    Ask Your Question
+                </button>
+            </div>
+        </div>
+    </form>
+    {{-- <form action="{{ route('homepost') }}" method="POST">
         @csrf
         <div class="question-modals sticky-top-100 flex justify-center">
             <div
@@ -386,7 +452,9 @@
     </form>
     <div class="backdrop nonactive bg-sky-600/50 w-full absolute top-[83px] -mt-2 mb-4" style="z-index: 10; height:100%">
 
-    </div>
+    </div> --}}
+
+    <div class="mb-[1200px]"></div>
 
     <script src="{{ asset('js/home.js') }}"></script>
 @endsection

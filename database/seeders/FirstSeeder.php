@@ -82,6 +82,7 @@ class FirstSeeder extends Seeder
     UserRank::create(["user_id" => 1, "rank_id" => 6]);
     UserRank::create(["user_id" => 2, "rank_id" => 4]);
     UserRank::create(["user_id" => 4, "rank_id" => 6]);
+    UserRank::create(["user_id" => 3, "rank_id" => 6]);
 
     Category::create(["name" => "Object Oriented Programming"]);
     Category::create(["name" => "Cloud Computing"]);
