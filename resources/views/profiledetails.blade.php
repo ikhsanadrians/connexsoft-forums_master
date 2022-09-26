@@ -4,8 +4,11 @@
         <div class="profile bg-slate-200 w-1/2 h-1/2 p-4 mt-10 rounded-lg flex justify-center">
             <div class="picandname">
                 <div class="profiles-picture relative">
-                    <img src="{{ asset('storage/profilpicture/' . $users->profilepicture) }}" alt=""
-                        class="h-32 relative">
+                    <div class="profiles-picture h-32 w-32 rounded-full overflow-hidden object-cover">
+                        <img src="{{ asset('storage/profilpicture/' . $users->profilepicture) }}" alt=""
+                            class="h-full relative">
+                    </div>
+
                     <!-- The button to open modal -->
                     <label for="my-modal-3" class="absolute -mt-10 bg-orange-400 text-white rounded-2xl p-[2px]"><span
                             class="material-symbols-outlined">

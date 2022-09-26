@@ -80,8 +80,10 @@
                         </div>
 
                         <div class="profile flex gap-2 bg-slate-200 pt-[1.2px] pb-[1.2px] pr-4 rounded-2xl">
-                            <div class="profile-image flex items-center">
-                                <img src="{{ asset('images/dani.png') }}" alt="profile-image" class="h-8">
+                            <div
+                                class="profile-image flex items-center rounded-full h-8 w-8 overflow-hidden object-cover">
+                                <img src="{{ asset('storage/profilpicture/' . Auth::user()->profilepicture) }}"
+                                    alt="profile-image" class="h-full">
                             </div>
                             <div class="profile-username flex items-center">
                                 <p class="font-bold cursor-pointer text-slate-500"><a

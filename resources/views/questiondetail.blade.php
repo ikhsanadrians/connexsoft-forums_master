@@ -146,8 +146,13 @@
 
                         <!-- The button to open modal -->
 
-                        <label for="my-modal-3" class="btn modal-button rounded-2xl hover:opacity-80">Add Answers</label>
-
+                        @if ($questions->user->username == Auth::user()->username)
+                            <label for="my-modal-3" class="hidden btn modal-button rounded-2xl hover:opacity-80">Add
+                                Answers</label>
+                        @else
+                            <label for="my-modal-3" class="block btn modal-button rounded-2xl hover:opacity-80">Add
+                                Answers</label>
+                        @endif
                         <!-- Put this part before </body> tag -->
                         <input type="checkbox" id="my-modal-3" class="modal-toggle" />
                         <div class="modal">
@@ -233,10 +238,10 @@
                         </div>
                     </div>
                     <div
-                        class="-mt-[2.4px] seeanswers bg-indigo-500 hover:bg-indigo-400 hover:text-slate-100 duration-200 text-white font-semibold pt-[.70rem] pb-[.70rem] pl-4 pr-4 flex gap-[3px] items-center rounded-2xl cursor-pointer">
+                        class="-ml-2 -mt-[2.4px] seeanswers bg-indigo-500 hover:bg-indigo-400 hover:text-slate-100 duration-200 text-white font-semibold pt-[.70rem] pb-[.70rem] pl-4 pr-4 flex gap-[3px] items-center rounded-2xl cursor-pointer">
                         <span class="material-symbols-outlined">
                             visibility
-                        </span> See Answers
+                        </span><a href="#answers"> See Answers</a>
                     </div>
 
                 </div>
@@ -259,119 +264,136 @@
             </div>
             <div class="answers bg-white p-4 w-full h-full rounded-md shadow-lg">
 
-                <div class="answerswrapper">
-                    <div class="title-answers">
+                <section id="answers">
+                    <div class="answerswrapper">
 
-                        <h1 class="font-bold text-xl p-4 text-slate-700">Answers</h1>
-                    </div>
 
-                    @foreach ($questions->answers as $question)
-                        <div class="answers-inner p-4 max-w-full max-h-full bg-slate-100 rounded-2xl mt-4">
-                            <div class="answers flex items-center gap-2">
-                                <img src="{{ asset('images/orangs/raya.png') }}" alt="profilepic" class="h-12">
+                        <div class="title-answers">
 
-                                <div class="usersdetails flex gap-2">
-                                    <div class="font-bold">{{ $question->user->username }} |
-                                        {{ $question->created_at->diffForHumans() }}</div>
-                                    @if (!$question->user->userrank)
-                                        <div
-                                            class="ranks bg-slate-300 border-2 border-slate-400  px-4 py-[1.5px] rounded-xl order-2">
-                                            <h1 class="font-bold text-slate-600">Unranked</h1>
+                            <h1 class="font-bold text-xl p-4 text-slate-700">Answers</h1>
+                        </div>
 
+
+
+
+                        @foreach ($questions->answers as $question)
+                            <div class="answers-inner p-4 max-w-full max-h-full bg-slate-100 rounded-2xl mt-4">
+                                <div class="answers flex items-center gap-2">
+                                    <img src="{{ asset('images/orangs/raya.png') }}" alt="profilepic" class="h-12">
+
+                                    <div class="usersdetails flex gap-2">
+                                        <div class="font-bold">{{ $question->user->username }} |
+                                            {{ $question->created_at->diffForHumans() }}</div>
+                                        @if (!$question->user->userrank)
+                                            <div
+                                                class="ranks bg-slate-300 border-2 border-slate-400  px-4 py-[1.5px] rounded-xl order-2">
+                                                <h1 class="font-bold text-slate-600">Unranked</h1>
+
+                                            </div>
+                                        @else
+                                            @switch($question->user->userrank->rank->name)
+                                                @case('Pakar')
+                                                    <div
+                                                        class="ranks bg-gradient-to-r from-sky-600 to-blue-700 px-4 py-[1.5px] rounded-xl order-2">
+                                                        <h1 class="font-bold text-white">
+                                                            {{ $question->user->userrank->rank->name }}
+                                                        </h1>
+
+                                                    </div>
+                                                @break
+
+                                                @case('Si Hebat')
+                                                    <div
+                                                        class="ranks bg-gradient-to-r from-red-600 to-amber-500 px-4 py-[1.5px] rounded-xl order-2">
+                                                        <h1 class="font-bold text-white">
+                                                            {{ $question->user->userrank->rank->name }}
+                                                        </h1>
+
+                                                    </div>
+                                                @break
+
+                                                @case('Gemar Membantu')
+                                                    <div
+                                                        class="ranks bg-gradient-to-r from-emerald-400 to-amber-500 px-4 py-[1.5px] rounded-xl order-2">
+                                                        <h1 class="font-bold text-white">
+                                                            {{ $question->user->userrank->rank->name }}
+                                                        </h1>
+
+                                                    </div>
+                                                @break
+
+                                                @case('Terpelajar')
+                                                    <div
+                                                        class="ranks bg-gradient-to-r from-amber-600 to-lime-600 px-4 py-[1.5px] rounded-xl order-2">
+                                                        <h1 class="font-bold text-white">
+                                                            {{ $question->user->userrank->rank->name }}
+                                                        </h1>
+
+                                                    </div>
+                                                @break
+
+                                                @case('Pemula')
+                                                    <div
+                                                        class="ranks bg-gradient-to-r from-slate-200 to-zinc-400 px-4 py-[1.5px] rounded-xl order-2">
+                                                        <h1 class="font-bold text-white">
+                                                            {{ $question->user->userrank->rank->name }}
+                                                        </h1>
+
+                                                    </div>
+                                                @break
+
+                                                @case('Ambisius')
+                                                    <div
+                                                        class="ranks bg-gradient-to-r from-red-300 to-amber-300 px-4 py-[1.5px] rounded-xl order-2">
+                                                        <h1 class="font-bold text-white">
+                                                            {{ $question->user->userrank->rank->name }}
+                                                        </h1>
+
+                                                    </div>
+                                                @break
+
+                                                @default
+                                            @endswitch
+                                        @endif
+
+
+
+                                    </div>
+
+                                </div>
+                                <div class="content mt-4">
+                                    <h1>{{ $question->content }}</h1>
+
+                                </div>
+                                <div class="thanksandrate mt-4 flex justify-between gap-4">
+                                    <div
+                                        class="thanks flex  font-bold -top-3 items-center bg-slate-200 pl-4 mt-2 pr-4 pt-[1.5px] pb-[1.5px] rounded-2xl hover:bg-slate-300 duration-200 cursor-pointer hover:-translate-y-2">
+                                        <span class="material-symbols-outlined text-blue-500">
+                                            arrow_upward
+                                        </span> Up
+                                    </div>
+                                    <div class="rate">
+
+                                        <div class="rating">
+
+                                            <input type="radio" name="rating-1"
+                                                class="mask mask-star-2 bg-orange-400" />
+                                            <input type="radio" name="rating-2"
+                                                class="mask mask-star-2 bg-orange-400" />
+                                            <input type="radio" name="rating-3"
+                                                class="mask mask-star-2 bg-orange-400" />
+                                            <input type="radio" name="rating-4"
+                                                class="mask mask-star-2 bg-orange-400" />
+                                            <input type="radio" name="rating-5"
+                                                class="mask mask-star-2 bg-orange-400" />
                                         </div>
-                                    @else
-                                        @switch($question->user->userrank->rank->name)
-                                            @case('Pakar')
-                                                <div
-                                                    class="ranks bg-gradient-to-r from-sky-600 to-blue-700 px-4 py-[1.5px] rounded-xl order-2">
-                                                    <h1 class="font-bold text-white">{{ $question->user->userrank->rank->name }}
-                                                    </h1>
-
-                                                </div>
-                                            @break
-
-                                            @case('Si Hebat')
-                                                <div
-                                                    class="ranks bg-gradient-to-r from-red-600 to-amber-500 px-4 py-[1.5px] rounded-xl order-2">
-                                                    <h1 class="font-bold text-white">{{ $question->user->userrank->rank->name }}
-                                                    </h1>
-
-                                                </div>
-                                            @break
-
-                                            @case('Gemar Membantu')
-                                                <div
-                                                    class="ranks bg-gradient-to-r from-emerald-400 to-amber-500 px-4 py-[1.5px] rounded-xl order-2">
-                                                    <h1 class="font-bold text-white">{{ $question->user->userrank->rank->name }}
-                                                    </h1>
-
-                                                </div>
-                                            @break
-
-                                            @case('Terpelajar')
-                                                <div
-                                                    class="ranks bg-gradient-to-r from-amber-600 to-lime-600 px-4 py-[1.5px] rounded-xl order-2">
-                                                    <h1 class="font-bold text-white">{{ $question->user->userrank->rank->name }}
-                                                    </h1>
-
-                                                </div>
-                                            @break
-
-                                            @case('Pemula')
-                                                <div
-                                                    class="ranks bg-gradient-to-r from-slate-200 to-zinc-400 px-4 py-[1.5px] rounded-xl order-2">
-                                                    <h1 class="font-bold text-white">{{ $question->user->userrank->rank->name }}
-                                                    </h1>
-
-                                                </div>
-                                            @break
-
-                                            @case('Ambisius')
-                                                <div
-                                                    class="ranks bg-gradient-to-r from-red-300 to-amber-300 px-4 py-[1.5px] rounded-xl order-2">
-                                                    <h1 class="font-bold text-white">{{ $question->user->userrank->rank->name }}
-                                                    </h1>
-
-                                                </div>
-                                            @break
-
-                                            @default
-                                        @endswitch
-                                    @endif
-
-
-
-                                </div>
-
-                            </div>
-                            <div class="content mt-4">
-                                <h1>{{ $question->content }}</h1>
-
-                            </div>
-                            <div class="thanksandrate mt-4 flex justify-between gap-4">
-                                <div
-                                    class="thanks flex  font-bold -top-3 items-center bg-slate-200 pl-4 mt-2 pr-4 pt-[1.5px] pb-[1.5px] rounded-2xl hover:bg-slate-300 duration-200 cursor-pointer hover:-translate-y-2">
-                                    <span class="material-symbols-outlined text-blue-500">
-                                        arrow_upward
-                                    </span> Up
-                                </div>
-                                <div class="rate">
-
-                                    <div class="rating">
-
-                                        <input type="radio" name="rating-1" class="mask mask-star-2 bg-orange-400" />
-                                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                        <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" />
-                                        <input type="radio" name="rating-4" class="mask mask-star-2 bg-orange-400" />
-                                        <input type="radio" name="rating-5" class="mask mask-star-2 bg-orange-400" />
                                     </div>
                                 </div>
+
                             </div>
-
-                        </div>
-                    @endforeach
-                </div>
-
+                        @endforeach
+                    </div>
+                </section>
 
 
 
