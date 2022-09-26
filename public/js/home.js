@@ -72,5 +72,3 @@
 //     previewimg.src = img
 
 // })
-
-
