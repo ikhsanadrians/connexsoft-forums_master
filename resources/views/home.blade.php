@@ -113,8 +113,9 @@
                     class="faq w-full h-[200px]  shadow-lg rounded-lg bg-[#ffffff] border-slate-300 items-center flex justify-center">
                     <div class="faq-profile p-4">
                         <div class="profileandimages flex justify-center items-center gap-2">
-                            <div class="faq-images">
-                                <img src="{{ Auth::user()->profilepicture }}" alt="dany" class="h-24">
+                            <div class="faq-images h-28 w-28 overflow-hidden rounded-full">
+                                <img src="{{ asset('storage/profilpicture/' . Auth::user()->profilepicture) }}"
+                                    alt="dany" class="h-full w-full object-cover">
                             </div>
                             <div class="faq-description flex-col">
                                 <ul>

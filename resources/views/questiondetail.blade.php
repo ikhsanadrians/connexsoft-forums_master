@@ -150,7 +150,7 @@
                             <label for="my-modal-3" class="hidden btn modal-button rounded-2xl hover:opacity-80">Add
                                 Answers</label>
                         @else
-                            <label for="my-modal-3" class="block btn modal-button rounded-2xl hover:opacity-80">Add
+                            <label for="my-modal-3" class="block btn modal-button pt-4 mr-2 rounded-2xl hover:opacity-80">Add
                                 Answers</label>
                         @endif
                         <!-- Put this part before </body> tag -->

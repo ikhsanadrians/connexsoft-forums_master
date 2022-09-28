@@ -2,11 +2,11 @@
 @section('content')
     <div class="container flex justify-center w-full h-full">
         <div class="profile bg-slate-200 w-1/2 h-1/2 p-4 mt-10 rounded-lg flex justify-center">
-            <div class="picandname">
+            <div class="picandname flex justify-center">
                 <div class="profiles-picture relative">
                     <div class="profiles-picture h-32 w-32 rounded-full overflow-hidden object-cover">
                         <img src="{{ asset('storage/profilpicture/' . $users->profilepicture) }}" alt=""
-                            class="h-full relative">
+                            class="h-full w-full relative object-cover">
                     </div>
 
                     <!-- The button to open modal -->
@@ -18,13 +18,16 @@
 
                 </div>
 
-                <div class="profiles-name">
-                    <div class="changeusername flex">
-                        <h1 class="font-bold text-3xl">{{ $users->username }}</h1>
+                <div class="profiles-name flex items-center ml-4">
+                    <div class="name">
+                        <div class="changeusername flex">
+                            <h1 class="font-bold text-3xl">{{ $users->username }}</h1>
 
+                        </div>
+
+                        <h3>{{ $users->name }}</h3>
                     </div>
 
-                    <h3>{{ $users->name }}</h3>
                 </div>
             </div>
 
