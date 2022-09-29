@@ -33,6 +33,15 @@
 
         </div>
 
+
+    </div>
+    <div class="stats flex justify-center">
+        <div class="question">
+            My Questions
+        </div>
+        <div class="answers">
+            <h1>My Answers</h1>
+        </div>
     </div>
     <!-- Put this part before </body> tag -->
     <input type="checkbox" id="my-modal-3" class="modal-toggle" />
