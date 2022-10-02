@@ -5,8 +5,13 @@
             <div class="picandname flex items-center">
                 <div class="profiles-picture relative">
                     <div class="profiles-picture h-32 w-32 rounded-full overflow-hidden object-cover">
-                        <img src="{{ asset('storage/profilpicture/' . $users->profilepicture) }}" alt=""
-                            class="h-full w-full relative object-cover">
+                        @if (!$users->profilepicture)
+                            <img src="{{ asset('images/anonim.png') }}" alt=""
+                                class="h-full w-full relative object-cover">
+                        @else
+                            <img src="{{ asset('storage/profilpicture/' . $users->profilepicture) }}" alt=""
+                                class="h-full w-full relative object-cover">
+                        @endif
                     </div>
 
                     <!-- The button to open modal -->
