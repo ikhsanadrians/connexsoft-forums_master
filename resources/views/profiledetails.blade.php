@@ -2,7 +2,7 @@
 @section('content')
     <div class="container flex justify-center w-full h-full">
         <div class="profile bg-slate-200 w-1/2 h-1/2 p-4 mt-10 rounded-lg flex justify-center">
-            <div class="picandname flex justify-center">
+            <div class="picandname flex items-center">
                 <div class="profiles-picture relative">
                     <div class="profiles-picture h-32 w-32 rounded-full overflow-hidden object-cover">
                         <img src="{{ asset('storage/profilpicture/' . $users->profilepicture) }}" alt=""
@@ -10,7 +10,8 @@
                     </div>
 
                     <!-- The button to open modal -->
-                    <label for="my-modal-3" class="absolute -mt-10 bg-orange-400 text-white rounded-2xl p-[2px]"><span
+                    <label for="my-modal-3"
+                        class="absolute -mt-10 bg-orange-400 text-white rounded-full flex justify-center items-center h-8 w-8"><span
                             class="material-symbols-outlined">
                             edit
                         </span></label>

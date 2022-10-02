@@ -14,8 +14,13 @@
             class="faq w-[25%] order-2 h-[200px] border border-gray-200  shadow-lg rounded-lg bg-[#ffffff] items-center flex justify-center">
             <div class="faq-profile p-4">
                 <div class="profileandimages flex justify-center items-center gap-2">
-                    <div class="faq-images">
-                        <img src="{{ asset('images/dani.png') }}" alt="dany" class="h-24">
+                    <div class="faq-images rounded-full h-28 w-28 overflow-hidden">
+                        @if (!Auth::user()->profilepicture)
+                            <img src="{{ asset('images/anonim.png') }}" alt="dany" class="h-full w-full object-cover">
+                        @else
+                            <img src="{{ asset('storage/profilpicture/' . Auth::user()->profilepicture) }}" alt="dany"
+                                class="h-full w-full object-cover">
+                        @endif
                     </div>
                     <div class="faq-description flex-col">
                         <ul>
@@ -111,7 +116,16 @@
                 class="details-card flex flex-col gap-4 w-full mb-2 pb-[20px] h-[300px] rounded-lg shadow-lg bg-[#ffffff] border-slate-300 p-4">
                 <div class="details-profiles flex gap-2">
                     <div class="imgandname flex gap-2 items-center">
-                        <img src="{{ asset('images/dani.png') }}" alt="dany" class="h-12 flex items-center">
+                        <div class="profilepicture h-12 w-12 rounded-full overflow-hidden">
+                            @if(!Auth::user()->profilepicture)
+                            <img src="{{ asset('images/anonim.png') }}" alt="anonim"
+                            class="h-full w-full flex items-center object-cover">
+                            @else
+                            <img src="{{ asset('storage/profilpicture/' . Auth::user()->profilepicture) }}" alt="dany"
+                            class="h-full w-full flex items-center object-cover">
+                            @endif
+
+                            </div>
                         <div class="details-description flex-col items-center">
                             <p class="">{{ $questions->user->username }}</p>
                             @if (!$questions->user->userrank)
@@ -150,7 +164,8 @@
                             <label for="my-modal-3" class="hidden btn modal-button rounded-2xl hover:opacity-80">Add
                                 Answers</label>
                         @else
-                            <label for="my-modal-3" class="block btn modal-button pt-4 mr-2 rounded-2xl hover:opacity-80">Add
+                            <label for="my-modal-3"
+                                class="block btn modal-button pt-4 mr-2 rounded-2xl hover:opacity-80">Add
                                 Answers</label>
                         @endif
                         <!-- Put this part before </body> tag -->

@@ -8,3 +8,8 @@ body {
     font-family: 'Plus Jakarta Sans', sans-serif;
 
 }
+
+body {
+    height: 100vh;
+    min-height: 100vh;
+}
