@@ -9,13 +9,13 @@ class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+    *
      * @return \Illuminate\Http\Response
      */
     public function index($id)
     {
 
-        $users = User::findOrFail($id);
+        $users = User::findOrFail(decrypt($id));
          return view('profiledetails',compact('users'));
 
     }
@@ -33,7 +33,7 @@ class UserController extends Controller
         'profilepicture' => $filenames,
       ]);
 
-      return redirect(route('profileindex',$id));
+      return redirect(route('profileindex',encrypt($id)));
 
     }
 

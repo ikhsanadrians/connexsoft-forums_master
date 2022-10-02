@@ -79,11 +79,17 @@
 
                     <div class="profile flex gap-2 bg-slate-200 pt-[1.2px] pb-[1.2px] pr-4 rounded-2xl">
                         <div class="profile-image flex items-center rounded-full h-8 w-8 overflow-hidden">
-                            <img src="{{ asset('storage/profilpicture/' . Auth::user()->profilepicture) }}"
-                                alt="profile-image" class="h-full w-full object-cover">
+                            @if (!Auth::user()->profilepicture)
+                                <img src="{{ asset('images/anonim.png') }}" alt="profile-image"
+                                    class="h-full w-full object-cover">
+                            @else
+                                <img src="{{ asset('storage/profilpicture/' . Auth::user()->profilepicture) }}"
+                                    alt="profile-image" class="h-full w-full object-cover">
+                            @endif
                         </div>
                         <div class="profile-username flex items-center">
-                            <p class="font-bold cursor-pointer text-slate-500"><a v-pre>{{ Auth::user()->username }}</a>
+                            <p class="font-bold cursor-pointer text-slate-500"><a
+                                    href="{{ url('/user/' . encrypt(Auth::user()->id) . '/details') }}">{{ Auth::user()->username }}</a>
                             </p>
                         </div>
                     </div>
@@ -99,8 +105,7 @@
                     </div>
                     <div class="logout">
                         <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                        document.getElementById('logout-form') .submit();"
+                            onclick="event.preventDefault(); document.getElementById('logout-form') .submit();"
                             class="flex items-center">
                             <span class="material-symbols-outlined text-slate-500">
                                 logout

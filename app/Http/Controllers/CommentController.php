@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -22,9 +23,20 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request,$id)
     {
-        //
+       $comments = $request->comment;
+       $questionid = $request->route('id');
+       Comment::create([
+         'content' => $comments,
+         'question_id' => $questionid,
+         'answer_id' => $request->route('id'),
+         'comment_id' => $request->route('id'),
+         'user_id' => Auth::user()->id,
+       ]);
+
+       return redirect(route('detailsquestion',$questionid));
+
     }
 
     /**

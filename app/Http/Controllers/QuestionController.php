@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -46,9 +47,9 @@ class QuestionController extends Controller
      */
     public function showdetailsquestion($id)
     {
-
+        $comments = Comment::all()->where('question_id',$id);
         $questions = Question::with('answers', 'user')->findOrFail($id);
-        return view('questiondetail', compact('questions'));
+    return view('questiondetail', compact('questions','comments'));
     }
 
     /**

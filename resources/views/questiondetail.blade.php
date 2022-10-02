@@ -113,19 +113,19 @@
         <div class="questionandanswers w-[75%]">
 
             <div
-                class="details-card flex flex-col gap-4 w-full mb-2 pb-[20px] h-[300px] rounded-lg shadow-lg bg-[#ffffff] border-slate-300 p-4">
+                class="details-card flex flex-col gap-4 w-full mb-8 pb-[4rem] max-h-[1400px] rounded-lg shadow-lg bg-[#ffffff] border-slate-200 border-[1.2px] p-4">
                 <div class="details-profiles flex gap-2">
                     <div class="imgandname flex gap-2 items-center">
                         <div class="profilepicture h-12 w-12 rounded-full overflow-hidden">
-                            @if(!Auth::user()->profilepicture)
-                            <img src="{{ asset('images/anonim.png') }}" alt="anonim"
-                            class="h-full w-full flex items-center object-cover">
+                            @if (!$questions->user->profilepicture)
+                                <img src="{{ asset('images/anonim.png') }}" alt="anonim"
+                                    class="h-full w-full flex items-center object-cover">
                             @else
-                            <img src="{{ asset('storage/profilpicture/' . Auth::user()->profilepicture) }}" alt="dany"
-                            class="h-full w-full flex items-center object-cover">
+                                <img src="{{ asset('storage/profilpicture/' . $questions->user->profilepicture) }}"
+                                    alt="dany" class="h-full w-full flex items-center object-cover">
                             @endif
 
-                            </div>
+                        </div>
                         <div class="details-description flex-col items-center">
                             <p class="">{{ $questions->user->username }}</p>
                             @if (!$questions->user->userrank)
@@ -263,18 +263,62 @@
 
 
                 <div class="comments flex items-center gap-2">
-                    <div class="comments-images">
-                        <img src="{{ asset('images/orangs/sentana.png') }}" alt="dany" class="h-10">
+                    <div
+                        class="comments-images h-10 w-10 rounded-full overflow-hidden pointer-events-none user-select-none">
+                        @if (!Auth::user()->profilepicture)
+                            <img src="{{ asset('images/anonim.png') }}" alt="dany"
+                                class="h-full w-full object-cover">
+                        @else
+                            <img src="{{ asset('storage/profilpicture/' . Auth::user()->profilepicture) }}"
+                                alt="dany" class="h-full w-full object-cover">
+                        @endif
                     </div>
-                    <div class="comentsinput w-full flex items-center">
-                        <span class="material-symbols-outlined absolute flex item-center ml-2 text-slate-600">
-                            comment
-                        </span>
-                        <input type="text"
-                            class="border-[1.4px] focus:outline-none focus:border-blue-600 focus:border-2 border-slate-300 pl-10 pt-2 pb-2 w-full rounded-2xl"
-                            placeholder="Ask {{ $questions->user->username }} About This Question..">
-                    </div>
+                    <form action="{{ route('createcomments', $questions->id) }}" method="post"
+                        class="w-full h-full mt-4">
+                        @csrf
+                        <div class="comentsinput w-full flex items-center relative">
+                            <span class="material-symbols-outlined absolute flex item-center ml-2 text-slate-600">
+                                comment
+                            </span>
 
+                            <input type="text"
+                                class="border-[1.4px] focus:outline-none focus:border-blue-600 focus:border-2 border-slate-300 pl-10 pt-2 pb-2 w-full rounded-2xl"
+                                placeholder="Ask {{ $questions->user->username }} About This Question.." name="comment">
+                            <button type="submit" class="absolute right-2 flex items-center">
+                                <span
+                                    class="material-symbols-outlined  text-blue-600 cursor-pointer hover:bg-blue-600 hover:text-white hover:p-[3px] hover:rounded-full">
+                                    send
+                                </span>
+                            </button>
+
+
+                        </div>
+                    </form>
+                </div>
+                <div class="comments-show w-full h-full pl-8">
+                    @foreach ($comments as $comment)
+                        <div class="comment-card w-full  h-full shadow-lg border-slate-200 border-[1.2px] p-2 rounded-xl">
+                            <div class="comments-profile flex items-center gap-2">
+                                <div
+                                    class="comments-images h-10 w-10 rounded-full overflow-hidden pointer-events-none user-select-none">
+                                    @if (!Auth::user()->profilepicture)
+                                        <img src="{{ asset('images/anonim.png') }}" alt="dany"
+                                            class="h-full w-full object-cover">
+                                    @else
+                                        <img src="{{ asset('storage/profilpicture/' . Auth::user()->profilepicture) }}"
+                                            alt="dany" class="h-full w-full object-cover">
+                                    @endif
+                                </div>
+                                <div class="comments-username">
+                                    <p>{{ Auth::user()->username }}</p>
+                                </div>
+                                <div class="comments-username">
+                                    <p>{{ $comment->content }}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    @endforeach
                 </div>
             </div>
             <div class="answers bg-white p-4 w-full h-full rounded-md shadow-lg">
@@ -294,7 +338,16 @@
                         @foreach ($questions->answers as $question)
                             <div class="answers-inner p-4 max-w-full max-h-full bg-slate-100 rounded-2xl mt-4">
                                 <div class="answers flex items-center gap-2">
-                                    <img src="{{ asset('images/orangs/raya.png') }}" alt="profilepic" class="h-12">
+                                    <div class="imagecircle h-8 w-8 rounded-full overflow-hidden">
+                                        @if (!$question->user->profilepicture)
+                                            <img src="{{ asset('images/anonim.png') }}" alt="dany"
+                                                class="h-full w-full object-cover">
+                                        @else
+                                            <img src="{{ asset('storage/profilpicture/' . $question->user->profilepicture) }}"
+                                                alt="dany" class="h-full w-full object-cover">
+                                        @endif
+                                    </div>
+
 
                                     <div class="usersdetails flex gap-2">
                                         <div class="font-bold">{{ $question->user->username }} |
