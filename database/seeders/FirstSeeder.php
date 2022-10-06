@@ -124,7 +124,7 @@ class FirstSeeder extends Seeder
     ReportCategory::create(['name' => "Agak Cringe"]);
 
 
-    // Report::create(["user_id"=>2 , "answer_id" => 1  , "status" => "correction"]);
+    Report::create(["user_id"=>2 , "answer_id" => 1  , "status" => "correction"]);
 
     // Respond::create(["moderator_id"=> 1, "report_id"=> 1, "message" => NULL , "action" => "Rejected"]);
 
