@@ -10,7 +10,7 @@ class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * tes
      * @return \Illuminate\Http\Response
      */
     public function index()
