@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Rate;
@@ -35,6 +35,7 @@ class FirstSeeder extends Seeder
       "Name" => "Muhammad Ramdani",
       "Username" => "RamdaniXX1",
       "Email" => "ramdani234@gmail.com",
+      "Slug" => Str::slug('RamdaniXX1'),
       "Password" => Hash::make("Ramdani234"),
     ]);
 
@@ -42,6 +43,7 @@ class FirstSeeder extends Seeder
       "Name" => "Raya Ar-Rizky",
       "Username" => "RayaSquirel",
       "Email" => "rayaarizky238@gmail.com",
+      "Slug" => Str::slug('rayasquirel'),
       "Password" => Hash::make("rayadudung234"),
     ]);
 

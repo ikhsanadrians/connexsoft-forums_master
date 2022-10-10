@@ -29,5 +29,5 @@ Route::post('/',[App\Http\Controllers\HomeController::class,'create'])->name('ho
 Route::get('/question/{id}/details',[App\Http\Controllers\QuestionController::class,'showdetailsquestion'])->name('detailsquestion');
 Route::post('/question/{id}/details/addcomments',[App\Http\Controllers\CommentController::class,'create'])->name('createcomments');
 Route::post('/question/{id}/details/addanswers',[App\Http\Controllers\AnswerController::class,'create'])->name('createanswers');
-Route::get('user/{id}/details',[App\Http\Controllers\UserController::class,'index'])->name('profileindex');
-Route::post('user/{id}/details',[App\Http\Controllers\UserController::class,'changeProfilePicture'])->name('profilepost');
+Route::get('user/{user:slug}',[App\Http\Controllers\UserController::class,'index'])->name('profileindex');
+Route::post('user/{user:slug}',[App\Http\Controllers\UserController::class,'changeProfilePicture'])->name('profilepost');

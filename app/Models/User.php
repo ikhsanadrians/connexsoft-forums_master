@@ -20,10 +20,16 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'profilepicture',
+        'slug',
         'username',
         'email',
         'password',
     ];
+
+    public function getRouteKeyName()
+{
+   return 'slug';
+}
 
 
     /**

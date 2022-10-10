@@ -12,15 +12,15 @@ class UserController extends Controller
     *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($slug)
     {
 
-        $users = User::findOrFail(decrypt($id));
+        $users = User::where('slug',$slug)->firstorfail();
          return view('profiledetails',compact('users'));
 
     }
 
-    public function changeProfilePicture(Request $request,$id){
+    public function changeProfilePicture(Request $request,$slug){
 
       $validatedData = $request->validate([
         'image' => 'image|file|max:5024'
@@ -29,11 +29,11 @@ class UserController extends Controller
       $filenames = $request->image->getClientOriginalName();
       $request->image->storeAs('profilpicture',$filenames);
 
-      User::find($id)->update([
+      User::where('slug',$slug)->update([
         'profilepicture' => $filenames,
       ]);
 
-      return redirect(route('profileindex',encrypt($id)));
+      return redirect(route('profileindex',$slug));
 
     }
 

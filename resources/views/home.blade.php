@@ -130,7 +130,7 @@
                                 <ul>
                                     <li class="mb-2">
                                         <h1 class="text-xl font-semibold"><a
-                                                href="{{ url('/user/' . encrypt(Auth::user()->id) . '' . '/details') }}">{{ Auth::user()->username }}</a>
+                                                href="{{ route('profileindex', Auth::user()->slug) }}">{{ Auth::user()->username }}</a>
                                         </h1>
                                     </li>
                                     <li class="mb-2">

@@ -57,7 +57,7 @@
             <h3 class="text-lg font-bold">Upload The Images</h3>
             <div class="flex-col justify-center">
                 <div class="mb-3 w-96">
-                    <form action="{{ route('profilepost', $users->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('profilepost', $users->slug) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input
                             class="form-control
