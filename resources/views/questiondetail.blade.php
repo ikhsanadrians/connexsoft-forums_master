@@ -297,24 +297,27 @@
                 </div>
                 <div class="comments-show w-full h-full pl-8">
                     @foreach ($comments as $comment)
-                        <div class="comment-card w-full  h-full shadow-lg border-slate-200 border-[1.2px] p-2 rounded-xl">
-                            <div class="comments-profile flex items-center gap-2">
+                        <div class="comment-card w-full  h-full shadow-lg  p-2 rounded-2xl mb-2 bg-slate-100">
+                            <div class="comments-profile flex items-start gap-2">
                                 <div
                                     class="comments-images h-10 w-10 rounded-full overflow-hidden pointer-events-none user-select-none">
-                                    @if (!Auth::user()->profilepicture)
+                                    @if (!$comment->user->profilepicture)
                                         <img src="{{ asset('images/anonim.png') }}" alt="dany"
                                             class="h-full w-full object-cover">
                                     @else
-                                        <img src="{{ asset('storage/profilpicture/' . Auth::user()->profilepicture) }}"
+                                        <img src="{{ asset('storage/profilpicture/' . $comment->user->profilepicture) }}"
                                             alt="dany" class="h-full w-full object-cover">
                                     @endif
                                 </div>
-                                <div class="comments-username">
-                                    <p>{{ Auth::user()->username }}</p>
+                                <div class="usernameandcontent">
+                                    <div class="comments-username font-semibold">
+                                        <p>{{ $comment->user->username }}</p>
+                                    </div>
+                                    <div class="comments-content">
+                                        <p>{{ $comment->content }}</p>
+                                    </div>
                                 </div>
-                                <div class="comments-username">
-                                    <p>{{ $comment->content }}</p>
-                                </div>
+
                             </div>
 
                         </div>

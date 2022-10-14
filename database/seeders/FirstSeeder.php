@@ -52,6 +52,7 @@ class FirstSeeder extends Seeder
       "Username" => "dolpineris",
       "profilepicture" => "asset('images/orangs/ferisdolpin.png')",
       "Email" => "dolphineferis@gmail.com",
+      "Slug" => Str::slug('dolpinferis'),
       "Password" => Hash::make("ferisaldolpin"),
     ]);
 
