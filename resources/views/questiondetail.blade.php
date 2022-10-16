@@ -338,36 +338,36 @@
 
 
 
-                        @foreach ($questions->answers as $question)
+                        @foreach ($questions->answers as $answer)
                             <div class="answers-inner p-4 max-w-full max-h-full bg-slate-100 rounded-2xl mt-4">
                                 <div class="answers flex items-center gap-2">
                                     <div class="imagecircle h-8 w-8 rounded-full overflow-hidden">
-                                        @if (!$question->user->profilepicture)
+                                        @if (!$answer->user->profilepicture)
                                             <img src="{{ asset('images/anonim.png') }}" alt="dany"
                                                 class="h-full w-full object-cover">
                                         @else
-                                            <img src="{{ asset('storage/profilpicture/' . $question->user->profilepicture) }}"
+                                            <img src="{{ asset('storage/profilpicture/' . $answer->user->profilepicture) }}"
                                                 alt="dany" class="h-full w-full object-cover">
                                         @endif
                                     </div>
 
 
                                     <div class="usersdetails flex gap-2">
-                                        <div class="font-bold">{{ $question->user->username }} |
-                                            {{ $question->created_at->diffForHumans() }}</div>
-                                        @if (!$question->user->userrank)
+                                        <div class="font-bold">{{ $answer->user->username }} |
+                                            {{ $answer->created_at->diffForHumans() }}</div>
+                                        @if (!$answer->user->userrank)
                                             <div
                                                 class="ranks bg-slate-300 border-2 border-slate-400  px-4 py-[1.5px] rounded-xl order-2">
                                                 <h1 class="font-bold text-slate-600">Unranked</h1>
 
                                             </div>
                                         @else
-                                            @switch($question->user->userrank->rank->name)
+                                            @switch($answer->user->userrank->rank->name)
                                                 @case('Pakar')
                                                     <div
                                                         class="ranks bg-gradient-to-r from-sky-600 to-blue-700 px-4 py-[1.5px] rounded-xl order-2">
                                                         <h1 class="font-bold text-white">
-                                                            {{ $question->user->userrank->rank->name }}
+                                                            {{ $answer->user->userrank->rank->name }}
                                                         </h1>
 
                                                     </div>
@@ -377,7 +377,7 @@
                                                     <div
                                                         class="ranks bg-gradient-to-r from-red-600 to-amber-500 px-4 py-[1.5px] rounded-xl order-2">
                                                         <h1 class="font-bold text-white">
-                                                            {{ $question->user->userrank->rank->name }}
+                                                            {{ $answer->user->userrank->rank->name }}
                                                         </h1>
 
                                                     </div>
@@ -387,7 +387,7 @@
                                                     <div
                                                         class="ranks bg-gradient-to-r from-emerald-400 to-amber-500 px-4 py-[1.5px] rounded-xl order-2">
                                                         <h1 class="font-bold text-white">
-                                                            {{ $question->user->userrank->rank->name }}
+                                                            {{ $answer->user->userrank->rank->name }}
                                                         </h1>
 
                                                     </div>
@@ -397,7 +397,7 @@
                                                     <div
                                                         class="ranks bg-gradient-to-r from-amber-600 to-lime-600 px-4 py-[1.5px] rounded-xl order-2">
                                                         <h1 class="font-bold text-white">
-                                                            {{ $question->user->userrank->rank->name }}
+                                                            {{ $answer->user->userrank->rank->name }}
                                                         </h1>
 
                                                     </div>
@@ -407,7 +407,7 @@
                                                     <div
                                                         class="ranks bg-gradient-to-r from-slate-200 to-zinc-400 px-4 py-[1.5px] rounded-xl order-2">
                                                         <h1 class="font-bold text-white">
-                                                            {{ $question->user->userrank->rank->name }}
+                                                            {{ $answer->user->userrank->rank->name }}
                                                         </h1>
 
                                                     </div>
@@ -417,7 +417,7 @@
                                                     <div
                                                         class="ranks bg-gradient-to-r from-red-300 to-amber-300 px-4 py-[1.5px] rounded-xl order-2">
                                                         <h1 class="font-bold text-white">
-                                                            {{ $question->user->userrank->rank->name }}
+                                                            {{ $answer->user->userrank->rank->name }}
                                                         </h1>
 
                                                     </div>
@@ -433,7 +433,7 @@
 
                                 </div>
                                 <div class="content mt-4">
-                                    <h1>{{ $question->content }}</h1>
+                                    <h1>{{ $answer->content }}</h1>
 
                                 </div>
                                 <div class="thanksandrate mt-4 flex justify-between gap-4">
@@ -460,6 +460,29 @@
                                         </div>
                                     </div>
                                 </div>
+                                <form action="{{ route('createcomments', $questions->id) }}" method="post"
+                                    class="w-full h-full mt-4">
+                                    @csrf
+                                    <div class="comentsinput w-full flex items-center relative">
+                                        <span
+                                            class="material-symbols-outlined absolute flex item-center ml-2 text-slate-600">
+                                            comment
+                                        </span>
+
+                                        <input type="text"
+                                            class="border-[1.4px] focus:outline-none focus:border-blue-600 focus:border-2 border-slate-300 pl-10 pt-2 pb-2 w-full rounded-2xl"
+                                            placeholder="Ask {{ $answer->user->username }} About This Answers.."
+                                            name="comment">
+                                        <button type="submit" class="absolute right-2 flex items-center">
+                                            <span
+                                                class="material-symbols-outlined  text-blue-600 cursor-pointer hover:bg-blue-600 hover:text-white hover:p-[3px] hover:rounded-full">
+                                                send
+                                            </span>
+                                        </button>
+
+
+                                    </div>
+                                </form>
 
                             </div>
                         @endforeach
